@@ -16,15 +16,6 @@ export class Search_Query {
 		this.min_bedrooms = 0;
 		this.property_type = 0;
 	}
-
-	get purchase_type_int() {
-		switch (this.purchase_type) {
-			case 'buy':
-				return 1;
-			case 'rent':
-				return 2;
-		}
-	}
 }
 export interface PropertyType {
 	NameType: string;
@@ -101,7 +92,18 @@ export async function api_request(search_query: Search_Query) {
 		method: 'GET'
 	};
 
-	const request_url = `https://webapi.resales-online.com/V6/SearchProperties?p_agency_filterid=${search_query.purchase_type_int}&p1=${VITE_API_IDENTIFIER}&p2=${VITE_API_KEY}&p_beds=${search_query.min_bedrooms}x&p_min=${search_query.min_price}&p_max=${search_query.max_price}&p_location=${search_query.location}&P_output=JSON&P_all=True`;
+	let purchase_type = 0;
+
+	switch (search_query.purchase_type) {
+		case 'buy':
+			purchase_type = 1;
+			break;
+		case 'rent':
+			purchase_type = 2;
+			break;
+	}
+
+	const request_url = `https://webapi.resales-online.com/V6/SearchProperties?p_agency_filterid=${purchase_type}&p1=${VITE_API_IDENTIFIER}&p2=${VITE_API_KEY}&p_beds=${search_query.min_bedrooms}x&p_min=${search_query.min_price}&p_max=${search_query.max_price}&p_location=${search_query.location}&P_output=JSON&P_all=True`;
 
 	const result = await fetch(request_url, request_options);
 	const result_json = (await result.json()) as Response;
