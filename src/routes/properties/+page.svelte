@@ -1,4 +1,7 @@
 <script lang="ts">
+	import AutoComplete from 'simple-svelte-autocomplete';
+	import Property from '$lib/property/property.svelte';
+	import { number_to_euro } from '$lib/util';
 	import {
 		Form,
 		FormGroup,
@@ -7,23 +10,26 @@
 		RadioButton,
 		Select,
 		SelectItem,
-		Button
+		Button,
+		ImageLoader
 	} from 'carbon-components-svelte';
-	import type { Error_Response, Response, Search_Query, Success_Response } from './api';
 
-	export let data: { params: Search_Query; results: Response };
+	import type { Error_Response, Search_Query, Success_Response } from './search_api';
+	import type { Location_Response } from './location_api';
+	import type { Search_Response } from './search_api';
+
+	export let data: { params: Search_Query; results: [Search_Response, Location_Response] };
 
 	let params: Search_Query;
-	let results: Success_Response;
-	let error: Error_Response;
+	let search_results: Search_Response;
+	let location_response: Location_Response;
+
 	$: {
 		params = data.params;
 
-		if (data.results.transaction.status === 'success') {
-			results = data.results as Success_Response;
-		} else {
-			error = data.results as Error_Response;
-		}
+		search_results = data.results[0];
+		location_response = data.results[1];
+		console.log(location_response)
 	}
 </script>
 
@@ -37,8 +43,9 @@
 	<FormGroup>
 		<RadioButtonGroup name="purchase_type" selected={params.purchase_type}>
 			<RadioButton value="buy" name="purchase_type" labelText="Buy" />
-			<RadioButton value="rent" name="purchase_type" labelText="Rent" />
-			<RadioButton value="dev" name="purchase_type" labelText="Developments" />
+			<RadioButton value="short_rent" name="purchase_type" labelText="Short Term Rent" />
+			<RadioButton value="long_rent" name="purchase_type" labelText="Long Term Rent" />
+			<RadioButton value="featured" name="purchase_type" labelText="Featured" />
 		</RadioButtonGroup>
 	</FormGroup>
 
@@ -52,23 +59,20 @@
 		</Select>
 	</FormGroup>
 
+	{#if location_response && location_response.status}
+		<AutoComplete items={location_response.LocationData?.ProvinceArea.Locations.Location} />
+	{/if}
 	<!--  PRICE RANGE SELECT -->
 	<FormGroup class="inline_select">
 		<Select labelText="Min Price" name="min_price" selected={params.min_price}>
 			{#each [...Array(21).keys()] as i}
-				<SelectItem
-					value={i * 100000 + ''}
-					text={(i * 100000).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
-				/>
+				<SelectItem value={i * 100000 + ''} text={number_to_euro(i * 100000)} />
 			{/each}
 		</Select>
 
 		<Select labelText="Max Price" name="max_price" selected={params.max_price}>
 			{#each [...Array(21).keys()] as i}
-				<SelectItem
-					value={i * 100000 + ''}
-					text={(i * 100000).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
-				/>
+				<SelectItem value={i * 100000 + ''} text={number_to_euro(i * 100000)} />
 			{/each}
 		</Select>
 	</FormGroup>
@@ -86,15 +90,32 @@
 	<button type="submit" class="submit_button">Search</button>
 </Form>
 
-{#if results.transaction.status === 'success'}
-	{#each results.Property as property}
-		{JSON.stringify(property)}
-	{/each}
-{:else}
-	{error.transaction.errordescription}
-{/if}
+<!-- DISPLAY RESULTS -->
+<div class="results">
+	{#if search_results && search_results.status}
+		<!-- PROPERTIES IF FOUND -->
+		<div class="properties">
+			{#each search_results.Property as property}
+				<Property {property} />
+			{/each}
+		</div>
+	{:else if search_results}
+		<!-- ERROR MESSAGE INSTEAD OF PROPERTIES -->
+		{search_results.transaction.errordescription}
+	{/if}
+</div>
 
 <style>
+	.results {
+		margin-top: 30px;
+	}
+	.properties {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		gap: 20px;
+	}
+
 	:global(.inline_select) {
 		display: flex;
 		gap: 5px;
