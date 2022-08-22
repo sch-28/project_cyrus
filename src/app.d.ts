@@ -7,3 +7,8 @@ declare namespace App {
 	// interface PrivateEnv {}
 	// interface PublicEnv {}
 }
+declare module 'simple-svelte-autocomplete' {
+	export default class AutoComplete extends SvelteComponent {
+		$$prop_def: any;
+	}
+}
