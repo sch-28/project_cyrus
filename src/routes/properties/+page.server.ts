@@ -1,6 +1,6 @@
-import { error } from '@sveltejs/kit';
-import type { PageServerLoad, Action } from './$types';
-import { api_request, Search_Query } from './api';
+import type { PageServerLoad } from './$types';
+import { api_location_request, type Location_Response } from './location_api';
+import {  api_search_request, Search_Query, type Search_Response } from './search_api';
 
 export const load: PageServerLoad = async (load_event) => {
 	let params = load_event.url.searchParams;
@@ -19,8 +19,10 @@ export const load: PageServerLoad = async (load_event) => {
 			console.log('invalid param');
 		}
 	}
+	let promises:[Promise<Search_Response>, Promise<Location_Response>];
+	promises = [api_search_request(search_query),api_location_request(search_query.purchase_type)]	
 
-	const result = await api_request(search_query);
+	const results = await Promise.all(promises)
 
-	return { params: search_query, results: result };
+	return { params: search_query, results: results };
 };
