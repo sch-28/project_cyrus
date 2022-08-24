@@ -6,12 +6,8 @@
 
 	export let property: Property;
 </script>
-
 <div class="property">
 	<div class="property_image_wrapper">
-		<!-- {#if property.Pictures.Count > 0}
-					<ImageLoader src={property.Pictures.Picture[0].PictureURL} />
-				{/if} -->
 		<img src={property.MainImage} class="property_image" alt="property" />
 	</div>
 	<div class="property_info">

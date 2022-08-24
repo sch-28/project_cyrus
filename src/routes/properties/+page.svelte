@@ -5,16 +5,13 @@
 	import {
 		Form,
 		FormGroup,
-		Checkbox,
 		RadioButtonGroup,
 		RadioButton,
 		Select,
-		SelectItem,
-		Button,
-		ImageLoader
+		SelectItem
 	} from 'carbon-components-svelte';
 
-	import type { Error_Response, Search_Query, Success_Response } from './search_api';
+	import type { Search_Query } from './search_api';
 	import type { Location_Response } from './location_api';
 	import type { Search_Response } from './search_api';
 
@@ -25,11 +22,11 @@
 	let location_response: Location_Response;
 
 	$: {
+		// reactive variables that are changed when the data prop changes (data comes from the server)
 		params = data.params;
-
 		search_results = data.results[0];
 		location_response = data.results[1];
-		console.log(location_response)
+		// console.log(search_results, location_response);
 	}
 </script>
 
@@ -41,11 +38,11 @@
 <Form on:submit method="GET">
 	<!-- PURCHASE RADIO BUTTONS -->
 	<FormGroup>
-		<RadioButtonGroup name="purchase_type" selected={params.purchase_type}>
-			<RadioButton value="buy" name="purchase_type" labelText="Buy" />
-			<RadioButton value="short_rent" name="purchase_type" labelText="Short Term Rent" />
-			<RadioButton value="long_rent" name="purchase_type" labelText="Long Term Rent" />
-			<RadioButton value="featured" name="purchase_type" labelText="Featured" />
+		<RadioButtonGroup name="purchase_type" selected={params.purchase_type.toString()}>
+			<RadioButton value="1" name="purchase_type" labelText="Buy" />
+			<RadioButton value="2" name="purchase_type" labelText="Short Term Rent" />
+			<RadioButton value="3" name="purchase_type" labelText="Long Term Rent" />
+			<RadioButton value="4" name="purchase_type" labelText="Featured" />
 		</RadioButtonGroup>
 	</FormGroup>
 
@@ -89,7 +86,6 @@
 
 	<button type="submit" class="submit_button">Search</button>
 </Form>
-
 <!-- DISPLAY RESULTS -->
 <div class="results">
 	{#if search_results && search_results.status}
