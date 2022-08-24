@@ -26,7 +26,11 @@
 		params = data.params;
 		search_results = data.results[0];
 		location_response = data.results[1];
-		// console.log(search_results, location_response);
+	}
+
+	function submit_form() {
+		const form = document.getElementById('form') as HTMLFormElement | null;
+		form?.submit();
 	}
 </script>
 
@@ -35,10 +39,14 @@
 	<meta name="description" content="Search for specific properties" />
 </svelte:head>
 
-<Form on:submit method="GET">
+<Form on:submit method="GET" id="form">
 	<!-- PURCHASE RADIO BUTTONS -->
 	<FormGroup>
-		<RadioButtonGroup name="purchase_type" selected={params.purchase_type.toString()}>
+		<RadioButtonGroup
+			name="purchase_type"
+			selected={params.purchase_type.toString()}
+			on:click={submit_form}
+		>
 			<RadioButton value="1" name="purchase_type" labelText="Buy" />
 			<RadioButton value="2" name="purchase_type" labelText="Short Term Rent" />
 			<RadioButton value="3" name="purchase_type" labelText="Long Term Rent" />
@@ -47,27 +55,25 @@
 	</FormGroup>
 
 	<!--  LOCATION SELECT -->
-	<FormGroup>
-		<Select labelText="Location" name="location" selected={params.location}>
-			<SelectItem value="" text="Choose an option" />
-			<SelectItem value="area1" text="Area1" />
-			<SelectItem value="area2" text="Area2" />
-			<SelectItem value="area3" text="Area3" />
-		</Select>
+	<FormGroup legendText="Location" >
+		{#if location_response && location_response.status}
+			<AutoComplete
+				items={location_response.LocationData?.ProvinceArea.Locations.Location}
+				name="location"
+				bind:selectedItem={params.location}
+			/>
+		{/if}
 	</FormGroup>
 
-	{#if location_response && location_response.status}
-		<AutoComplete items={location_response.LocationData?.ProvinceArea.Locations.Location} />
-	{/if}
 	<!--  PRICE RANGE SELECT -->
 	<FormGroup class="inline_select">
-		<Select labelText="Min Price" name="min_price" selected={params.min_price}>
+		<Select labelText="Min Price" name="min_price" bind:selected={params.min_price}>
 			{#each [...Array(21).keys()] as i}
 				<SelectItem value={i * 100000 + ''} text={number_to_euro(i * 100000)} />
 			{/each}
 		</Select>
 
-		<Select labelText="Max Price" name="max_price" selected={params.max_price}>
+		<Select labelText="Max Price" name="max_price" bind:selected={params.max_price}>
 			{#each [...Array(21).keys()] as i}
 				<SelectItem value={i * 100000 + ''} text={number_to_euro(i * 100000)} />
 			{/each}
@@ -76,7 +82,7 @@
 
 	<!--  LOCATION SELECT -->
 	<FormGroup>
-		<Select labelText="Min Bedrooms" name="min_bedrooms" selected={params.min_bedrooms}>
+		<Select labelText="Min Bedrooms" name="min_bedrooms" bind:selected={params.min_bedrooms}>
 			<SelectItem value="0" text="Min Bedrooms" />
 			{#each [...Array(6).keys()] as i}
 				<SelectItem value={i + 1 + ''} text={i + 1 + ''} />
@@ -125,5 +131,43 @@
 		border: none;
 		border-radius: 5px;
 		font-size: 1.1rem;
+	}
+
+	:global(.autocomplete input) {
+		font-size: 0.875rem;
+		font-weight: 400;
+		line-height: 1.28572;
+		letter-spacing: 0.16px;
+		outline: 2px solid rgba(0, 0, 0, 0);
+		outline-offset: -2px;
+		display: block;
+		width: 100%;
+		height: 2.5rem;
+		padding: 0 3rem 0 1rem;
+		border: none;
+		border-bottom: 1px solid #8d8d8d;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		background-color: #f4f4f4;
+		border-radius: 0;
+		color: #161616;
+		cursor: pointer;
+		font-family: inherit;
+		opacity: 1;
+		transition: outline 70ms cubic-bezier(0.2, 0, 0.38, 0.9);
+		height: 2.5rem !important;
+	}
+
+	:global(.autocomplete::after) {
+		border: unset !important;
+		border-bottom: 1px solid !important;
+		border-left: 1px solid !important;
+		border-radius: unset !important;
+
+		height: 0.4em !important;
+		margin-top: 0 !important;
+		width: 0.4em !important;
+		border-color: #383737 !important;
 	}
 </style>
