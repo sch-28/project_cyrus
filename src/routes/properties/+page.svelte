@@ -28,6 +28,7 @@
 		params = data.params;
 		search_results = data.results[0];
 		location_results = data.results[1];
+		console.log(search_results);
 	}
 
 	function change_page(new_page: number) {
@@ -71,6 +72,7 @@
 				name="location"
 				bind:selectedItem={params.location}
 				placeholder="All locations"
+				showClear
 			/>
 		{/if}
 	</FormGroup>
@@ -153,6 +155,10 @@
 		margin-bottom: 1rem !important;
 	}
 
+	:global(.bx--form-item) {
+		width: 50%;
+	}
+
 	.submit_button {
 		cursor: pointer;
 		padding: 10px;
@@ -165,6 +171,10 @@
 
 	:global(.autocomplete.select) {
 		width: 50%;
+	}
+
+	:global(.input-container) {
+		position: relative;
 	}
 
 	:global(.autocomplete input) {
