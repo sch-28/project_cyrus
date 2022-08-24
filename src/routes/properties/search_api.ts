@@ -7,6 +7,7 @@ export class Search_Query {
 	max_price: number;
 	min_bedrooms: number;
 	property_type: number;
+	page: number;
 
 	constructor() {
 		this.purchase_type = 1;
@@ -15,6 +16,7 @@ export class Search_Query {
 		this.max_price = 0;
 		this.min_bedrooms = 0;
 		this.property_type = 0;
+		this.page = 1;
 	}
 }
 export interface PropertyType {
@@ -107,13 +109,13 @@ export async function api_search_request(search_query: Search_Query) {
 		method: 'GET'
 	};
 
-	const request_url = `https://webapi.resales-online.com/V6/SearchProperties?p_agency_filterid=${search_query.purchase_type}&p1=${VITE_API_IDENTIFIER}&p2=${VITE_API_KEY}&p_beds=${search_query.min_bedrooms}x&p_min=${search_query.min_price}&p_max=${search_query.max_price}&p_location=${search_query.location}&p_Currency=EUR&P_output=JSON&p_images=1&p_PageSize=9`;
+	const request_url = `https://webapi.resales-online.com/V6/SearchProperties?p_agency_filterid=${search_query.purchase_type}&p1=${VITE_API_IDENTIFIER}&p2=${VITE_API_KEY}&p_beds=${search_query.min_bedrooms}x&p_min=${search_query.min_price}&p_max=${search_query.max_price}&p_location=${search_query.location}&p_Currency=EUR&P_output=JSON&p_images=1&p_PageSize=9&p_pageNo=${search_query.page}`;
 
 	const result = await fetch(request_url, request_options);
 	const result_json = (await result.json()) as Search_Response;
-	
 
-	if(result_json.transaction && result_json.transaction.status === "success") result_json.status = true;
+	if (result_json.transaction && result_json.transaction.status === 'success')
+		result_json.status = true;
 	else result_json.status = false;
 
 	return result_json;

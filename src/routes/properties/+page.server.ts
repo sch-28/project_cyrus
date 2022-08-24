@@ -2,6 +2,7 @@ import type { PageServerLoad } from './$types';
 import { api_location_request, type Location_Response } from './location_api';
 import { api_search_request, Search_Query, type Search_Response } from './search_api';
 
+
 /**
  *  Function that is called on the *server* before sending the HTML to the user
  */

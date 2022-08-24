@@ -8,24 +8,32 @@
 		RadioButtonGroup,
 		RadioButton,
 		Select,
-		SelectItem
+		SelectItem,
+		PaginationNav
 	} from 'carbon-components-svelte';
 
 	import type { Search_Query } from './search_api';
 	import type { Location_Response } from './location_api';
 	import type { Search_Response } from './search_api';
+	import { goto } from '$app/navigation';
 
 	export let data: { params: Search_Query; results: [Search_Response, Location_Response] };
 
 	let params: Search_Query;
 	let search_results: Search_Response;
-	let location_response: Location_Response;
+	let location_results: Location_Response;
 
 	$: {
 		// reactive variables that are changed when the data prop changes (data comes from the server)
 		params = data.params;
 		search_results = data.results[0];
-		location_response = data.results[1];
+		location_results = data.results[1];
+	}
+
+	function change_page(new_page: number) {
+		const url_params = new URLSearchParams(window.location.search);
+		url_params.set('page', (+new_page + 1).toString());
+		if (params.page != new_page + 1) goto('?' + url_params.toString());
 	}
 
 	function submit_form() {
@@ -55,10 +63,10 @@
 	</FormGroup>
 
 	<!--  LOCATION SELECT -->
-	<FormGroup legendText="Location" >
-		{#if location_response && location_response.status}
+	<FormGroup legendText="Location">
+		{#if location_results && location_results.status}
 			<AutoComplete
-				items={location_response.LocationData?.ProvinceArea.Locations.Location}
+				items={location_results.LocationData?.ProvinceArea.Locations.Location}
 				name="location"
 				bind:selectedItem={params.location}
 			/>
@@ -101,6 +109,11 @@
 				<Property {property} />
 			{/each}
 		</div>
+		<PaginationNav
+			class="pagination"
+			total={Math.ceil(search_results.QueryInfo.PropertyCount / 9)}
+			on:change={(x) => change_page(x.detail.page)}
+		/>
 	{:else if search_results}
 		<!-- ERROR MESSAGE INSTEAD OF PROPERTIES -->
 		{search_results.transaction.errordescription}
@@ -108,6 +121,10 @@
 </div>
 
 <style>
+	:global(.pagination) {
+		display: flex;
+		justify-content: center;
+	}
 	.results {
 		margin-top: 30px;
 	}
