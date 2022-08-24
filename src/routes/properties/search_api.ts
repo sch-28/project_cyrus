@@ -1,11 +1,12 @@
 import { VITE_API_KEY, VITE_API_IDENTIFIER } from '$env/static/private';
+import { request } from './api';
 
-export const Property_Types  = {
+export const Property_Types = {
 	1: 'Apartment',
 	2: 'House',
 	3: 'Plot',
-	4: 'Commercial',
-}
+	4: 'Commercial'
+};
 
 export class Search_Query {
 	purchase_type: number;
@@ -112,18 +113,19 @@ export interface Error_Response {
 export type Search_Response = Success_Response | Error_Response;
 
 export async function api_search_request(search_query: Search_Query) {
-	const request_options = {
-		method: 'GET'
-	};
+	const parameters = [];
+	parameters.push({ name: 'p_agency_filterid', value: search_query.purchase_type });
+	parameters.push({ name: 'p_beds', value: search_query.min_bedrooms });
+	parameters.push({ name: 'p_min', value: search_query.min_price });
+	parameters.push({ name: 'p_max', value: search_query.max_price });
+	parameters.push({ name: 'p_currency', value: 'EUR' });
+	parameters.push({ name: 'p_location', value: search_query.location });
+	parameters.push({ name: 'p_pagesize', value: 9 });
+	parameters.push({ name: 'p_images', value: 1 });
+	parameters.push({ name: 'p_pageno', value: search_query.page });
+	parameters.push({ name: 'p_propertyTypes', value: `${search_query.property_type}-1` });
 
-	const request_url = `https://webapi.resales-online.com/V6/SearchProperties?p_agency_filterid=${search_query.purchase_type}&p1=${VITE_API_IDENTIFIER}&p2=${VITE_API_KEY}&p_beds=${search_query.min_bedrooms}x&p_min=${search_query.min_price}&p_max=${search_query.max_price}&p_location=${search_query.location}&p_Currency=EUR&P_output=JSON&p_images=1&p_PageSize=9&p_pageNo=${search_query.page}&p_propertyTypes=${search_query.property_type}-1`;
+	const result = await request<Search_Response>('SearchProperties', parameters);
 
-	const result = await fetch(request_url, request_options);
-	const result_json = (await result.json()) as Search_Response;
-
-	if (result_json.transaction && result_json.transaction.status === 'success')
-		result_json.status = true;
-	else result_json.status = false;
-
-	return result_json;
+	return result;
 }
