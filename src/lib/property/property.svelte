@@ -6,6 +6,7 @@
 
 	export let property: Property;
 </script>
+
 <div class="property">
 	<div class="property_image_wrapper">
 		<img src={property.MainImage} class="property_image" alt="property" />
@@ -14,6 +15,15 @@
 		<span class="property_title">
 			{property.Description}
 		</span>
+		<div class="property_id">
+			<span>
+				{property.Location}
+			</span>
+			<span>
+				{property.Reference}
+			</span>
+		</div>
+
 		<div class="property_stats">
 			<div class="stat">
 				<HospitalBed />
@@ -32,7 +42,7 @@
 					{number_to_euro(+property.Price)}
 				{:else}
 					Short Term: {number_to_euro(property.RentalPrice1)} / Week
-                    <br>
+					<br />
 					Long Term: {number_to_euro(property.RentalPrice2)} / Month
 				{/if}
 			</div>
@@ -49,6 +59,18 @@
 		flex-direction: column;
 	}
 
+	.property_id{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		gap: 5px;
+		margin-top: 10px;
+
+		font-size: 0.8rem;
+		font-weight: 300;
+	}
+
 	.property_image {
 		height: 200px;
 		width: 100%;
@@ -63,10 +85,10 @@
 
 	.property_title {
 		display: -webkit-box;
-		-webkit-line-clamp: 4;
+		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
-		height: 58px;
+		height: 30px;
 	}
 
 	.property_stats {
