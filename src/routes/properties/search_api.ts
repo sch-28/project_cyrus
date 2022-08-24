@@ -1,5 +1,12 @@
 import { VITE_API_KEY, VITE_API_IDENTIFIER } from '$env/static/private';
 
+export const Property_Types  = {
+	1: 'Apartment',
+	2: 'House',
+	3: 'Plot',
+	4: 'Commercial',
+}
+
 export class Search_Query {
 	purchase_type: number;
 	location: string;
@@ -109,7 +116,7 @@ export async function api_search_request(search_query: Search_Query) {
 		method: 'GET'
 	};
 
-	const request_url = `https://webapi.resales-online.com/V6/SearchProperties?p_agency_filterid=${search_query.purchase_type}&p1=${VITE_API_IDENTIFIER}&p2=${VITE_API_KEY}&p_beds=${search_query.min_bedrooms}x&p_min=${search_query.min_price}&p_max=${search_query.max_price}&p_location=${search_query.location}&p_Currency=EUR&P_output=JSON&p_images=1&p_PageSize=9&p_pageNo=${search_query.page}`;
+	const request_url = `https://webapi.resales-online.com/V6/SearchProperties?p_agency_filterid=${search_query.purchase_type}&p1=${VITE_API_IDENTIFIER}&p2=${VITE_API_KEY}&p_beds=${search_query.min_bedrooms}x&p_min=${search_query.min_price}&p_max=${search_query.max_price}&p_location=${search_query.location}&p_Currency=EUR&P_output=JSON&p_images=1&p_PageSize=9&p_pageNo=${search_query.page}&p_propertyTypes=${search_query.property_type}-1`;
 
 	const result = await fetch(request_url, request_options);
 	const result_json = (await result.json()) as Search_Response;

@@ -12,7 +12,7 @@
 		PaginationNav
 	} from 'carbon-components-svelte';
 
-	import type { Search_Query } from './search_api';
+	import { Property_Types, Search_Query } from './search_api';
 	import type { Location_Response } from './location_api';
 	import type { Search_Response } from './search_api';
 	import { goto } from '$app/navigation';
@@ -38,6 +38,7 @@
 
 	function submit_form() {
 		const form = document.getElementById('form') as HTMLFormElement | null;
+		params = new Search_Query();
 		form?.submit();
 	}
 </script>
@@ -69,6 +70,7 @@
 				items={location_results.LocationData?.ProvinceArea.Locations.Location}
 				name="location"
 				bind:selectedItem={params.location}
+				placeholder="All locations"
 			/>
 		{/if}
 	</FormGroup>
@@ -88,12 +90,19 @@
 		</Select>
 	</FormGroup>
 
-	<!--  LOCATION SELECT -->
-	<FormGroup>
+	<FormGroup class="inline_select">
+		<!--  BEDROOM SELECT -->
 		<Select labelText="Min Bedrooms" name="min_bedrooms" bind:selected={params.min_bedrooms}>
 			<SelectItem value="0" text="Min Bedrooms" />
 			{#each [...Array(6).keys()] as i}
 				<SelectItem value={i + 1 + ''} text={i + 1 + ''} />
+			{/each}
+		</Select>
+		<!--  TYPE SELECT -->
+		<Select labelText="Types" name="property_type" bind:selected={params.property_type}>
+			<SelectItem value="0" text="All types" />
+			{#each Object.values(Property_Types) as type, index}
+				<SelectItem value={index + 1 + ''} text={type} />
 			{/each}
 		</Select>
 	</FormGroup>
@@ -140,6 +149,10 @@
 		gap: 5px;
 	}
 
+	:global(.bx--fieldset) {
+		margin-bottom: 1rem !important;
+	}
+
 	.submit_button {
 		cursor: pointer;
 		padding: 10px;
@@ -148,6 +161,10 @@
 		border: none;
 		border-radius: 5px;
 		font-size: 1.1rem;
+	}
+
+	:global(.autocomplete.select) {
+		width: 50%;
 	}
 
 	:global(.autocomplete input) {
