@@ -1,4 +1,3 @@
-import { VITE_API_KEY, VITE_API_IDENTIFIER } from '$env/static/private';
 import { request } from './api';
 
 export const Property_Types = {
