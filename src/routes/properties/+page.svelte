@@ -9,13 +9,15 @@
 		RadioButton,
 		Select,
 		SelectItem,
-		PaginationNav
+		PaginationNav,
+		TextInput
 	} from 'carbon-components-svelte';
 
 	import { Property_Types, Search_Query } from './search_api';
 	import type { Location_Response } from './location_api';
 	import type { Search_Response } from './search_api';
 	import { goto } from '$app/navigation';
+	import { Label } from 'carbon-icons-svelte';
 
 	export let data: { params: Search_Query; results: [Search_Response, Location_Response] };
 
@@ -65,16 +67,21 @@
 	</FormGroup>
 
 	<!--  LOCATION SELECT -->
-	<FormGroup legendText="Location">
+	<FormGroup class="inline_select">
 		{#if location_results && location_results.status}
-			<AutoComplete
-				items={location_results.LocationData?.ProvinceArea.Locations.Location}
-				name="location"
-				bind:selectedItem={params.location}
-				placeholder="All locations"
-				showClear
-			/>
+			<div class="autocomplete_container">
+				<label class="bx--label" for="autocomplete_location">Location</label>
+				<AutoComplete
+					inputId="autocomplete_location"
+					items={location_results.LocationData?.ProvinceArea.Locations.Location}
+					name="location"
+					bind:selectedItem={params.location}
+					placeholder="All locations"
+					showClear
+				/>
+			</div>
 		{/if}
+		<TextInput labelText="Reference" />
 	</FormGroup>
 
 	<!--  PRICE RANGE SELECT -->
@@ -169,8 +176,10 @@
 		font-size: 1.1rem;
 	}
 
-	:global(.autocomplete.select) {
+	.autocomplete_container {
+		display: flex;
 		width: 50%;
+		flex-direction: column;
 	}
 
 	:global(.input-container) {
