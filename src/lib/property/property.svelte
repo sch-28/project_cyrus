@@ -3,52 +3,53 @@
 	import HospitalBed from 'carbon-icons-svelte/lib/HospitalBed.svelte';
 	import ShapeIntersect from 'carbon-icons-svelte/lib/ShapeIntersect.svelte';
 	import { number_to_euro } from '$lib/util';
-
 	export let property: Property;
 </script>
 
-<div class="property">
-	<div class="property_image_wrapper">
-		<img src={property.MainImage} class="property_image" alt="property" />
-	</div>
-	<div class="property_info">
-		<span class="property_title">
-			{property.Description}
-		</span>
-		<div class="property_id">
-			<span>
-				{property.Location}
+{#if property}
+	<div class="property">
+		<div class="property_image_wrapper">
+			<img src={property.MainImage} class="property_image" alt="property" />
+		</div>
+		<div class="property_info">
+			<span class="property_title">
+				{property.Description}
 			</span>
-			<span>
-				{property.Reference}
-			</span>
-		</div>
-
-		<div class="property_stats">
-			<div class="stat">
-				<HospitalBed />
-				{property.Bedrooms}
+			<div class="property_id">
+				<span>
+					{property.Location}
+				</span>
+				<span>
+					{property.Reference}
+				</span>
 			</div>
-			<div class="stat">
-				<ShapeIntersect />
-				{property.Built} m²
-			</div>
-		</div>
-		<div class="property_price">
-			<span>Asking Price</span>
 
-			<div>
-				{#if property.Price}
-					{number_to_euro(+property.Price)}
-				{:else}
-					Short Term: {number_to_euro(property.RentalPrice1)} / Week
-					<br />
-					Long Term: {number_to_euro(property.RentalPrice2)} / Month
-				{/if}
+			<div class="property_stats">
+				<div class="stat">
+					<HospitalBed />
+					{property.Bedrooms}
+				</div>
+				<div class="stat">
+					<ShapeIntersect />
+					{property.Built} m²
+				</div>
+			</div>
+			<div class="property_price">
+				<span>Asking Price</span>
+
+				<div>
+					{#if property.Price}
+						{number_to_euro(+property.Price)}
+					{:else}
+						Short Term: {number_to_euro(property.RentalPrice1)} / Week
+						<br />
+						Long Term: {number_to_euro(property.RentalPrice2)} / Month
+					{/if}
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+{/if}
 
 <style>
 	.property {
@@ -59,7 +60,7 @@
 		flex-direction: column;
 	}
 
-	.property_id{
+	.property_id {
 		display: flex;
 		justify-content: center;
 		flex-direction: column;

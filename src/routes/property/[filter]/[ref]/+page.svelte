@@ -64,8 +64,15 @@
 			<span>Terrace</span>
 		</div>
 		<div class="stat">
-			<span>{number_to_euro(data.results.Property.Price)}</span>
-			<span>Asking Price</span>
+			Asking Price
+			<br />
+			{#if data.results.Property.Price}
+				{number_to_euro(+data.results.Property.Price)}
+			{:else}
+				Short Term: {number_to_euro(data.results.Property.RentalPrice1)} / Week
+				<br />
+				Long Term: {number_to_euro(data.results.Property.RentalPrice2)} / Month
+			{/if}
 		</div>
 	</div>
 	<p class="description">{data.results.Property.Description}</p>
@@ -99,7 +106,7 @@
 	}
 	.carousel_button {
 		position: absolute;
-		top: calc(calc(100vh - 150px)/2);
+		top: calc(calc(100vh - 150px) / 2);
 		transform: translateY(-50%);
 		border: none;
 		padding: 15px;

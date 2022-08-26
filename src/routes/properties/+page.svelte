@@ -1,23 +1,22 @@
 <script lang="ts">
 	import AutoComplete from 'simple-svelte-autocomplete';
 	import Property from '$lib/property/property.svelte';
+	import type { Property as Property_Type } from './search_api';
 	import { number_to_euro } from '$lib/util';
-	import {
-		Form,
-		FormGroup,
-		RadioButtonGroup,
-		RadioButton,
-		Select,
-		SelectItem,
-		PaginationNav,
-		TextInput
-	} from 'carbon-components-svelte';
+
+	import Form from 'carbon-components-svelte/src/Form/Form.svelte';
+	import FormGroup from 'carbon-components-svelte/src/FormGroup/FormGroup.svelte';
+	import RadioButtonGroup from 'carbon-components-svelte/src/RadioButtonGroup/RadioButtonGroup.svelte';
+	import RadioButton from 'carbon-components-svelte/src/RadioButton/RadioButton.svelte';
+	import Select from 'carbon-components-svelte/src/Select/Select.svelte';
+	import PaginationNav from 'carbon-components-svelte/src/PaginationNav/PaginationNav.svelte';
+	import TextInput from 'carbon-components-svelte/src/TextInput/TextInput.svelte';
+	import SelectItem from 'carbon-components-svelte/src/Select/SelectItem.svelte';
 
 	import { Property_Types, Search_Query } from './search_api';
 	import type { Location_Response } from './location_api';
 	import type { Search_Response } from './search_api';
 	import { goto } from '$app/navigation';
-	import { Label } from 'carbon-icons-svelte';
 
 	export let data: { params: Search_Query; results: [Search_Response, Location_Response] };
 
@@ -30,7 +29,7 @@
 		params = data.params;
 		search_results = data.results[0];
 		location_results = data.results[1];
-		console.log(search_results);
+		
 	}
 
 	function change_page(new_page: number) {
@@ -43,6 +42,10 @@
 		const form = document.getElementById('form') as HTMLFormElement | null;
 		params = new Search_Query();
 		form?.submit();
+	}
+
+	function show_property(property: Property_Type) {
+		goto(`/property/${params.purchase_type}/${property.Reference}`);
 	}
 </script>
 
@@ -81,7 +84,7 @@
 				/>
 			</div>
 		{/if}
-		<TextInput labelText="Reference" />
+		<TextInput labelText="Reference" name="reference" />
 	</FormGroup>
 
 	<!--  PRICE RANGE SELECT -->
@@ -124,13 +127,16 @@
 		<!-- PROPERTIES IF FOUND -->
 		<div class="properties">
 			{#each search_results.Property as property}
-				<Property {property} />
+				<div class="clickable" on:click={() => show_property(property)}>
+					<Property {property} />
+				</div>
 			{/each}
 		</div>
 		<PaginationNav
 			class="pagination"
 			total={Math.ceil(search_results.QueryInfo.PropertyCount / 9)}
 			on:change={(x) => change_page(x.detail.page)}
+			page={params.page - 1}
 		/>
 	{:else if search_results}
 		<!-- ERROR MESSAGE INSTEAD OF PROPERTIES -->
@@ -139,6 +145,9 @@
 </div>
 
 <style>
+	.clickable {
+		cursor: pointer;
+	}
 	:global(.pagination) {
 		display: flex;
 		justify-content: center;

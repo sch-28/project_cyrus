@@ -6,9 +6,9 @@ import { api_detail_request } from './detail_api';
  */
 export const load: PageServerLoad = async (load_event) => {
 	const ref = load_event.params.ref;
+	const filter = load_event.params.filter;
 
-	const results = await api_detail_request(ref);
-
+	const results = await api_detail_request(filter,ref);
 
 
 	return { results: results, ref: load_event.params.ref};

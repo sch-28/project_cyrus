@@ -1,6 +1,8 @@
-import { request } from '../../properties/api';
+import { request } from '../../../properties/api';
 
 export interface Property_Detail{
+	RentalPrice2: number;
+	RentalPrice1: number;
 
 	Reference: string;
 	AgencyRef: string;
@@ -104,10 +106,10 @@ interface Error_Detail_Response {
 
 export type Detail_Response = Success_Detail_Response | Error_Detail_Response;
 
-export async function api_detail_request(ref: string) {
+export async function api_detail_request(filter:string, ref: string) {
 	const parameters = [];
 	parameters.push({ name: 'p_refid', value: ref });
-	parameters.push({ name: 'p_agency_filterid', value: 1 });
+	parameters.push({ name: 'p_agency_filterid', value: filter });
 
 	const result = await request<Detail_Response>('PropertyDetails', parameters);
 
