@@ -1,4 +1,4 @@
-# Project Cyrus the virus
+# Project Cyrus
 
 ## Installation
 Clone the repository and execute the following commands:
