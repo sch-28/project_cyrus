@@ -3,6 +3,7 @@
 	import HospitalBed from 'carbon-icons-svelte/lib/HospitalBed.svelte';
 	import ShapeIntersect from 'carbon-icons-svelte/lib/ShapeIntersect.svelte';
 	import { number_to_euro } from '$lib/util';
+	import { ShapeExcept, ShapeExclude } from 'carbon-icons-svelte';
 	export let property: Property;
 </script>
 
@@ -25,14 +26,30 @@
 			</div>
 
 			<div class="property_stats">
-				<div class="stat">
-					<HospitalBed />
-					{property.Bedrooms}
-				</div>
-				<div class="stat">
-					<ShapeIntersect />
-					{property.Built} m²
-				</div>
+				{#if +property.Bedrooms}
+					<div class="stat">
+						<HospitalBed />
+						{property.Bedrooms}
+					</div>
+				{/if}
+				{#if +property.Built}
+					<div class="stat">
+						<ShapeExcept />
+						{property.Built} m²
+					</div>
+				{/if}
+				{#if +property.GardenPlot}
+					<div class="stat">
+						<ShapeIntersect />
+						{property.GardenPlot} m²
+					</div>
+				{/if}
+				{#if +property.Terrace}
+					<div class="stat">
+						<ShapeExclude />
+						{property.Terrace} m²
+					</div>
+				{/if}
 			</div>
 			<div class="property_price">
 				<span>Asking Price</span>
