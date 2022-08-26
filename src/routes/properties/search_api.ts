@@ -114,7 +114,7 @@ export type Search_Response = Success_Response | Error_Response;
 export async function api_search_request(search_query: Search_Query) {
 	const parameters = [];
 	parameters.push({ name: 'p_agency_filterid', value: search_query.purchase_type });
-	parameters.push({ name: 'p_beds', value: search_query.min_bedrooms });
+	parameters.push({ name: 'p_beds', value: search_query.min_bedrooms + "x"});
 	parameters.push({ name: 'p_min', value: search_query.min_price });
 	parameters.push({ name: 'p_max', value: search_query.max_price });
 	parameters.push({ name: 'p_currency', value: 'EUR' });
