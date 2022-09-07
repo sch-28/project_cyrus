@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+import ButtonSkeleton from 'carbon-components-svelte/src/Button/ButtonSkeleton.svelte';
 
 	$: is_url = (url: string) => {
 		return $page.url.pathname === url;
@@ -14,9 +15,19 @@
 		<li class:active={is_url('/properties')}>
 			<a sveltekit:prefetch href="/properties">Properties</a>
 		</li>
-		<li class:active={is_url('/contact')}>
-			<a sveltekit:prefetch href="/contact">Contact</a>
+		<li class:active={is_url('/propertymanagement')}>
+			<a sveltekit:prefetch href="/propertymanagement">Property Management</a>
 		</li>
+		<li class:active={is_url('/guide')}>
+			<a sveltekit:prefetch href="/guide">Guide</a>
+		</li>
+		<li class:active={is_url('mailto:cyrus@varzi-realty.com')}>
+			<a sveltekit:prefetch href="mailto:cyrus@varzi-realty.com">Contact via E-Mail</a>
+		</li>
+		<li class:active={is_url('https://wa.me/34689105197')}>
+			<a sveltekit:prefetch href="https://wa.me/34689105197">Contact via Whatsapp </a>
+		</li>
+	
 	</ul>
 </header>
 

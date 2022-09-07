@@ -2,9 +2,8 @@
 	import type { Property } from 'src/routes/properties/search_api';
 	import HospitalBed from 'carbon-icons-svelte/lib/HospitalBed.svelte';
 	import ShapeIntersect from 'carbon-icons-svelte/lib/ShapeIntersect.svelte';
-	import ShapeExcept from 'carbon-icons-svelte/lib/ShapeExcept.svelte';
-	import ShapeExclude from 'carbon-icons-svelte/lib/ShapeExclude.svelte';
 	import { number_to_euro } from '$lib/util';
+	import { ShapeExcept, ShapeExclude } from 'carbon-icons-svelte';
 	export let property: Property;
 </script>
 
