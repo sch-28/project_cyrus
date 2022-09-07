@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-import ButtonSkeleton from 'carbon-components-svelte/src/Button/ButtonSkeleton.svelte';
 
 	$: is_url = (url: string) => {
 		return $page.url.pathname === url;
