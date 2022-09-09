@@ -20,8 +20,8 @@
 		<li class:active={is_url('/guide')}>
 			<a sveltekit:prefetch href="/guide">Guide</a>
 		</li>
-		<li class:active={is_url('mailto:cyrus@varzi-realty.com')}>
-			<a sveltekit:prefetch href="mailto:cyrus@varzi-realty.com">Contact via E-Mail</a>
+		<li class:active={is_url('https://varzirealty.staydirectly.com/')}>
+			<a sveltekit:prefetch href="https://varzirealty.staydirectly.com/">Short-Term Rentals</a>
 		</li>
 		<li class:active={is_url('https://wa.me/34689105197')}>
 			<a sveltekit:prefetch href="https://wa.me/34689105197">Contact via Whatsapp </a>
