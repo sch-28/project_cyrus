@@ -85,22 +85,14 @@
 			</div>
 		{/if}
 		<TextInput labelText="Reference" name="reference" />
-	</FormGroup>
+    </FormGroup>
 
-	<!--  PRICE RANGE SELECT -->
-	<FormGroup class="inline_select">
-		<Select labelText="Min Price" name="min_price" bind:selected={params.min_price}>
-			{#each [...Array(21).keys()] as i}
-				<SelectItem value={i * 100000 + ''} text={number_to_euro(i * 100000)} />
-			{/each}
-		</Select>
+    <!--  PRICE RANGE SELECT -->
+    <FormGroup class="inline_select">
+<TextInput labelText="Min Price" name="min_price" bind:value={params.min_price} />
+<TextInput labelText="Max Price" name="max_price" bind:value={params.max_price} />
 
-		<Select labelText="Max Price" name="max_price" bind:selected={params.max_price}>
-			{#each [...Array(21).keys()] as i}
-				<SelectItem value={i * 100000 + ''} text={number_to_euro(i * 100000)} />
-			{/each}
-		</Select>
-	</FormGroup>
+    </FormGroup>
 
 	<FormGroup class="inline_select">
 		<!--  BEDROOM SELECT -->

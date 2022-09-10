@@ -108,6 +108,7 @@ export type Detail_Response = Success_Detail_Response | Error_Detail_Response;
 
 export async function api_detail_request(filter:string, ref: string) {
 	const parameters = [];
+	if (filter == '4') filter = "1";
 	parameters.push({ name: 'p_refid', value: ref });
 	parameters.push({ name: 'p_agency_filterid', value: filter });
 

@@ -17,11 +17,11 @@
 		<li class:active={is_url('/propertymanagement')}>
 			<a sveltekit:prefetch href="/propertymanagement">Property Management</a>
 		</li>
-		<li class:active={is_url('/guide')}>
-			<a sveltekit:prefetch href="/guide">Guide</a>
-		</li>
 		<li class:active={is_url('https://varzirealty.staydirectly.com/')}>
 			<a sveltekit:prefetch href="https://varzirealty.staydirectly.com/">Short-Term Rentals</a>
+		</li>
+		<li class:active={is_url('/guide')}>
+			<a sveltekit:prefetch href="/guide">Guides & FAQs</a>
 		</li>
 		<li class:active={is_url('https://wa.me/34689105197')}>
 			<a sveltekit:prefetch href="https://wa.me/34689105197">Contact via Whatsapp </a>
