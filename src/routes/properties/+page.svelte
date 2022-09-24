@@ -89,7 +89,7 @@
 
     <!--  PRICE RANGE SELECT -->
     <FormGroup class="inline_select">
-<TextInput labelText="Min Price" name="min_price" bind:value={params.min_price} />
+<TextInput labelText="Min Price" name="min_price" bind:value={params.min_price} type="number" min="0.00" step="0.01" />
 <TextInput labelText="Max Price" name="max_price" bind:value={params.max_price} />
 
     </FormGroup>

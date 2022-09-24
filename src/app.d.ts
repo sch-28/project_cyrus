@@ -7,8 +7,12 @@ declare namespace App {
 	// interface PrivateEnv {}
 	// interface PublicEnv {}
 }
+import type { SvelteComponentTyped } from "svelte";
+
 declare module 'simple-svelte-autocomplete' {
-	export default class AutoComplete extends SvelteComponent {
+	export default class AutoComplete extends SvelteComponentTyped<{propertyName: string;}> {
 		$$prop_def: any;
+		$$events_def: any;
+		$$slot_def: any;
 	}
 }
