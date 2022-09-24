@@ -17,6 +17,7 @@
 	import type { Location_Response } from './location_api';
 	import type { Search_Response } from './search_api';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	export let data: { params: Search_Query; results: [Search_Response, Location_Response] };
 
@@ -29,7 +30,6 @@
 		params = data.params;
 		search_results = data.results[0];
 		location_results = data.results[1];
-		
 	}
 
 	function change_page(new_page: number) {
@@ -47,6 +47,31 @@
 	function show_property(property: Property_Type) {
 		goto(`/property/${params.purchase_type}/${property.Reference}`);
 	}
+
+	function format_input(value: string) {
+		// remove any invalid characters
+		const number = Number(String(value).replace(/[^0-9,-]+/g, ''));
+		// remove € sign and whitepsaces
+		const formatted_number = number_to_euro(number).replace('€', '').replace(/\s+/g, '');
+		return formatted_number;
+	}
+
+	onMount(() => {
+		// query all currency input fields
+		const input_refs = Array.from(
+			document.querySelectorAll("input[type='currency'")
+		) as HTMLInputElement[];
+
+		for (let input_ref of input_refs) {
+			// format inputs oninput
+			input_ref.oninput = (event) => {
+				const target = event.target as HTMLSelectElement;
+				const value = target.value;
+
+				target.value = format_input(value);
+			};
+		}
+	});
 </script>
 
 <svelte:head>
@@ -85,14 +110,29 @@
 			</div>
 		{/if}
 		<TextInput labelText="Reference" name="reference" />
-    </FormGroup>
+	</FormGroup>
 
-    <!--  PRICE RANGE SELECT -->
-    <FormGroup class="inline_select">
-<TextInput labelText="Min Price" name="min_price" bind:value={params.min_price} type="number" min="0.00" step="0.01" />
-<TextInput labelText="Max Price" name="max_price" bind:value={params.max_price} />
-
-    </FormGroup>
+	<!--  PRICE RANGE SELECT -->
+	<FormGroup class="inline_select">
+		<div class="currency_input_wrapper">
+			<TextInput
+				labelText="Min Price"
+				name="min_price"
+				bind:value={params.min_price}
+				type="currency"
+				min="0"
+			/>
+		</div>
+		<div class="currency_input_wrapper">
+			<TextInput
+				labelText="Max Price"
+				name="max_price"
+				bind:value={params.max_price}
+				type="currency"
+				min="0"
+			/>
+		</div>
+	</FormGroup>
 
 	<FormGroup class="inline_select">
 		<!--  BEDROOM SELECT -->
@@ -137,6 +177,18 @@
 </div>
 
 <style>
+	.currency_input_wrapper::after {
+		content: '€';
+		position: absolute;
+		top: 50%;
+		transform: translateY(30%);
+		right: 10px;
+	}
+	.currency_input_wrapper {
+		display: flex;
+		width: 100%;
+		position: relative;
+	}
 	.clickable {
 		cursor: pointer;
 	}
