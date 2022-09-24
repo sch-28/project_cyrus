@@ -123,6 +123,7 @@ export async function api_search_request(search_query: Search_Query) {
 	parameters.push({ name: 'p_images', value: 1 });
 	parameters.push({ name: 'p_pageno', value: search_query.page });
 	parameters.push({ name: 'p_propertyTypes', value: `${search_query.property_type}-1` });
+	parameters.push({ name: 'p_sortType', value: `1` });
 
 	const result = await request<Search_Response>('SearchProperties', parameters);
 
