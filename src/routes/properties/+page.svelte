@@ -18,7 +18,6 @@
 	import type { Search_Response } from './search_api';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
-	import { Cost } from 'carbon-icons-svelte';
 
 	export let data: { params: Search_Query; results: [Search_Response, Location_Response] };
 
@@ -95,7 +94,6 @@
 	<title>Properties</title>
 	<meta name="description" content="Search for specific properties" />
 </svelte:head>
-{selected_locations}
 <Form on:submit method="GET" id="form">
 	<!-- PURCHASE RADIO BUTTONS -->
 	<FormGroup>
