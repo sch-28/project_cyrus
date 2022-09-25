@@ -19,13 +19,14 @@ export const load: PageServerLoad = async (load_event) => {
 	for (let param_pair of params) {
 		// extract params names and their values
 		const param = param_pair[0] as keyof typeof search_query | 'reference';
-		const value = param_pair[1];
+		let value = param_pair[1];
+
+		value = value.replace(/[\.]+/g, '');
 
 		// checks whether the param is valid
 		if (param != 'reference' && param in search_query) {
 			if (param == 'locations') {
 				search_query.locations = value.split(',');
-				console.log(search_query['locations'], 'ho');
 			} else {
 				search_query[param] = value as never;
 			}

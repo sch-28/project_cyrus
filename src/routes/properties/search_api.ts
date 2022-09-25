@@ -112,7 +112,6 @@ export interface Error_Response {
 export type Search_Response = Success_Response | Error_Response;
 
 export async function api_search_request(search_query: Search_Query) {
-	console.log(search_query.locations, "hi");
 	const parameters = [];
 	parameters.push({ name: 'p_agency_filterid', value: search_query.purchase_type });
 	parameters.push({ name: 'p_beds', value: search_query.min_bedrooms + "x"});

@@ -64,12 +64,18 @@
 		goto(`/property/${params.purchase_type}/${property.Reference}`);
 	}
 
-	function format_input(value: string) {
+	function format_value(value: string) {
 		// remove any invalid characters
 		const number = Number(String(value).replace(/[^0-9,-]+/g, ''));
 		// remove € sign and whitepsaces
 		const formatted_number = number_to_euro(number).replace('€', '').replace(/\s+/g, '');
 		return formatted_number;
+	}
+
+	function format_input(input: HTMLInputElement) {
+		const value = input.value;
+
+		input.value = format_value(value);
 	}
 
 	onMount(() => {
@@ -79,12 +85,9 @@
 		) as HTMLInputElement[];
 
 		for (let input_ref of input_refs) {
-			// format inputs oninput
+			format_input(input_ref);
 			input_ref.oninput = (event) => {
-				const target = event.target as HTMLSelectElement;
-				const value = target.value;
-
-				target.value = format_input(value);
+				format_input(input_ref);
 			};
 		}
 	});
@@ -167,8 +170,9 @@
 		{/if}
 	</FormGroup>
 	<button type="submit" class="submit_button" name="locations" value={selected_locations.join(',')}
-		>Search</button
-	>
+		>Search
+	</button>
+	<a sveltekit:prefetch href="/properties" target="_self">Reset</a>
 </Form>
 <!-- DISPLAY RESULTS -->
 <div class="results">
@@ -243,6 +247,7 @@
 		border: none;
 		border-radius: 5px;
 		font-size: 1.1rem;
+		margin-right: 10px;
 	}
 
 	.autocomplete_container {
