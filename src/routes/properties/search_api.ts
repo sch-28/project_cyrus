@@ -9,7 +9,7 @@ export const Property_Types = {
 
 export class Search_Query {
 	purchase_type: number;
-	location: string;
+	locations: string[];
 	min_price: number;
 	max_price: number;
 	min_bedrooms: number;
@@ -18,7 +18,7 @@ export class Search_Query {
 
 	constructor() {
 		this.purchase_type = 1;
-		this.location = '';
+		this.locations = [];
 		this.min_price = 0;
 		this.max_price = 0;
 		this.min_bedrooms = 0;
@@ -112,13 +112,14 @@ export interface Error_Response {
 export type Search_Response = Success_Response | Error_Response;
 
 export async function api_search_request(search_query: Search_Query) {
+	console.log(search_query.locations, "hi");
 	const parameters = [];
 	parameters.push({ name: 'p_agency_filterid', value: search_query.purchase_type });
 	parameters.push({ name: 'p_beds', value: search_query.min_bedrooms + "x"});
 	parameters.push({ name: 'p_min', value: search_query.min_price });
 	parameters.push({ name: 'p_max', value: search_query.max_price });
 	parameters.push({ name: 'p_currency', value: 'EUR' });
-	parameters.push({ name: 'p_location', value: search_query.location });
+	parameters.push({ name: 'p_location', value: search_query.locations.join(",") });
 	parameters.push({ name: 'p_pagesize', value: 9 });
 	parameters.push({ name: 'p_images', value: 1 });
 	parameters.push({ name: 'p_pageno', value: search_query.page });

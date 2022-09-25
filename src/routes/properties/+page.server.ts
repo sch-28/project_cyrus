@@ -23,7 +23,12 @@ export const load: PageServerLoad = async (load_event) => {
 
 		// checks whether the param is valid
 		if (param != 'reference' && param in search_query) {
-			search_query[param] = value as never;
+			if (param == 'locations') {
+				search_query.locations = value.split(',');
+				console.log(search_query['locations'], 'ho');
+			} else {
+				search_query[param] = value as never;
+			}
 		} else if (param == 'reference') {
 			reference = value;
 		}
@@ -31,6 +36,11 @@ export const load: PageServerLoad = async (load_event) => {
 	if (reference != '') {
 		throw redirect(301, `property/${search_query.purchase_type}/${reference}`);
 	}
+
+	if (!search_query.locations) {
+		search_query.locations = [];
+	}
+
 	// create two api requests: search properties and give all valid locations for the given agency_filterID
 	let promises: [Promise<Search_Response>, Promise<Location_Response>];
 	promises = [api_search_request(search_query), api_location_request(search_query.purchase_type)];

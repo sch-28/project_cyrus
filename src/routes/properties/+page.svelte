@@ -3,7 +3,7 @@
 	import Property from '$lib/property/property.svelte';
 	import type { Property as Property_Type } from './search_api';
 	import { number_to_euro } from '$lib/util';
-
+	import 'bulma/css/bulma.css';
 	import Form from 'carbon-components-svelte/src/Form/Form.svelte';
 	import FormGroup from 'carbon-components-svelte/src/FormGroup/FormGroup.svelte';
 	import RadioButtonGroup from 'carbon-components-svelte/src/RadioButtonGroup/RadioButtonGroup.svelte';
@@ -18,6 +18,7 @@
 	import type { Search_Response } from './search_api';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import { Cost } from 'carbon-icons-svelte';
 
 	export let data: { params: Search_Query; results: [Search_Response, Location_Response] };
 
@@ -25,11 +26,27 @@
 	let search_results: Search_Response;
 	let location_results: Location_Response;
 
+	let selected_locations: string[] = [];
+
 	$: {
 		// reactive variables that are changed when the data prop changes (data comes from the server)
 		params = data.params;
 		search_results = data.results[0];
 		location_results = data.results[1];
+
+		update_selected_locations(params.locations);
+	}
+
+	$: {
+		update_locations(selected_locations);
+	}
+
+	function update_locations(new_locations: string[]) {
+		params.locations = new_locations;
+	}
+
+	function update_selected_locations(new_locations: string[]) {
+		selected_locations = new_locations;
 	}
 
 	function change_page(new_page: number) {
@@ -78,7 +95,7 @@
 	<title>Properties</title>
 	<meta name="description" content="Search for specific properties" />
 </svelte:head>
-
+{selected_locations}
 <Form on:submit method="GET" id="form">
 	<!-- PURCHASE RADIO BUTTONS -->
 	<FormGroup>
@@ -94,21 +111,14 @@
 		</RadioButtonGroup>
 	</FormGroup>
 
-	<!--  LOCATION SELECT -->
 	<FormGroup class="inline_select">
-		{#if location_results && location_results.status}
-			<div class="autocomplete_container">
-				<label class="bx--label" for="autocomplete_location">Location</label>
-				<AutoComplete
-					inputId="autocomplete_location"
-					items={location_results.LocationData?.ProvinceArea.Locations.Location}
-					name="location"
-					bind:selectedItem={params.location}
-					placeholder="All locations"
-					showClear
-				/>
-			</div>
-		{/if}
+		<!--  TYPE SELECT -->
+		<Select labelText="Types" name="property_type" bind:selected={params.property_type}>
+			<SelectItem value="0" text="All types" />
+			{#each Object.values(Property_Types) as type, index}
+				<SelectItem value={index + 1 + ''} text={type} />
+			{/each}
+		</Select>
 		<TextInput labelText="Reference" name="reference" />
 	</FormGroup>
 
@@ -142,16 +152,25 @@
 				<SelectItem value={i + 1 + ''} text={i + 1 + ''} />
 			{/each}
 		</Select>
-		<!--  TYPE SELECT -->
-		<Select labelText="Types" name="property_type" bind:selected={params.property_type}>
-			<SelectItem value="0" text="All types" />
-			{#each Object.values(Property_Types) as type, index}
-				<SelectItem value={index + 1 + ''} text={type} />
-			{/each}
-		</Select>
-	</FormGroup>
 
-	<button type="submit" class="submit_button">Search</button>
+		<!--  LOCATION SELECT -->
+		{#if location_results && location_results.status}
+			<div class="autocomplete_container">
+				<label class="bx--label" for="autocomplete_location">Location</label>
+				<AutoComplete
+					inputId="autocomplete_location"
+					items={location_results.LocationData?.ProvinceArea.Locations.Location}
+					bind:selectedItem={selected_locations}
+					placeholder="All locations"
+					showClear
+					multiple
+				/>
+			</div>
+		{/if}
+	</FormGroup>
+	<button type="submit" class="submit_button" name="locations" value={selected_locations.join(',')}
+		>Search</button
+	>
 </Form>
 <!-- DISPLAY RESULTS -->
 <div class="results">
@@ -181,7 +200,6 @@
 		content: '€';
 		position: absolute;
 		top: 50%;
-		transform: translateY(30%);
 		right: 10px;
 	}
 	.currency_input_wrapper {
