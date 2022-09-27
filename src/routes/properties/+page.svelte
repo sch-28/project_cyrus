@@ -3,7 +3,6 @@
 	import Property from '$lib/property/property.svelte';
 	import type { Property as Property_Type } from './search_api';
 	import { number_to_euro } from '$lib/util';
-	import 'bulma/css/bulma.css';
 	import Form from 'carbon-components-svelte/src/Form/Form.svelte';
 	import FormGroup from 'carbon-components-svelte/src/FormGroup/FormGroup.svelte';
 	import RadioButtonGroup from 'carbon-components-svelte/src/RadioButtonGroup/RadioButtonGroup.svelte';

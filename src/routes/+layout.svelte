@@ -3,6 +3,7 @@
     import Footer from "$lib/footer/Footer.svelte"
 	import '../app.css';
 	import "carbon-components-svelte/css/white.css";
+	import 'bulma/css/bulma.css';
 </script>
 
 <Header />

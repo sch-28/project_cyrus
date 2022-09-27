@@ -1,26 +1,151 @@
+<script lang="ts">
+	import header_image from '$lib/assets/headerImage.jfif';
+</script>
+
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="TODO" />
-	<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </svelte:head>
 
+<section class="landing">
+	<div class="header_image" style={`background-image: url(${header_image})`} />
+</section>
 
-<!-- Make sure you don't change the form action-->
-<form target ="thankyou" class=jotform-form action="https://api.staticforms.xyz/submit" method="post" name="form_contact">
-	<!-- Replace with accesKey sent to your email -->
-	<input type="hidden" name="accessKey" value="407a6bee-b1f7-4d34-ab6a-dbaee6250f3c"> <!-- Required -->
-	<input type="text" name="name" placeholder="Your Name"> <!-- Optional --><br>
-	<input type="text" name="email"placeholder="Your E-Mail Address"> <!-- Optional --><br>
-	<input type="text" name="phone"placeholder="Your Telephone Number"> <!-- Optional --><br>
-	<input type="text" name="subject"placeholder="Subject"> <!-- Optional --><br>
-	<textarea rows="8" name="message" placeholder="Your Message"></textarea> <!-- Optional --><br>
-	<!-- If you want form to redirect to a specific url after submission -->
-	<input type="hidden" name="redirectTo" value="https://varzi-realty.com/thank-you">
-	<!-- If we receive data in this field submission will be ignored -->
-	<input type="text" name="honeypot" style="display: none;"> <!-- Optional -->
-	<input type="submit" value="Submit" />
-	
-</form>
+<section class="description">
+	<div class="text_content">
+		<h1>Our Landlord Services</h1>
+		<h3>We have everything covered.</h3>
+		<br />
+		<span
+			>We manage all stages of your property’s vacation rental and ensure that your home is kept to
+			a high standard. Click on each of our services below to find out more!</span
+		>
+	</div>
+</section>
+
+<section class="evaluation">
+	<div class="evaluation_wrapper">
+		<div class="evaluation_text">
+			<h1>Your Property Has Potential</h1>
+			<h3>Find out how much you could be making.</h3>
+			<br />
+			<span
+				>Fill out this quick and easy form to get a better idea of just how much your property could
+				be generating for you every month of the year!</span
+			>
+		</div>
+		<div class="evaluation_form">
+			<div class="field">
+				<label class="label" for="name">Name</label>
+				<div class="control">
+					<input class="input is-primary" type="text" placeholder="Text input" id="name" />
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label" for="name">Email</label>
+				<div class="control">
+					<input class="input is-primary" type="email" placeholder="Text input" id="name" />
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label" for="name">Property Address</label>
+				<div class="control">
+					<input class="input is-primary" type="text" placeholder="Text input" id="name" />
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label" for="name">Number of Bedrooms</label>
+				<div class="control">
+					<input class="input is-primary" type="text" placeholder="Text input" id="name" />
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label" for="name">Type of Property</label>
+				<div class="control">
+					<input class="input is-primary" type="text" placeholder="Text input" id="name" />
+				</div>
+			</div>
+
+			<div class="control">
+				<button class="button is-link">Submit</button>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="contact">
+	<div class="text_content">
+		<h1>Contact Us</h1>
+	</div>
+</section>
+
+<style>
+	h1 {
+		font-weight: 600;
+		font-size: 2.5rem;
+	}
+
+	h3 {
+		font-size: 1.5rem;
+		color: #00b8bc;
+	}
+
+	span {
+		font-size: 1.25rem;
+		line-height: 2rem;
+	}
+
+	section {
+		min-height: 70px;
+		margin-bottom: 10rem;
+		width: 100%;
+	}
+
+	section.landing {
+		height: 55vh;
+	}
+
+	.text_content {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		padding: 0 25%;
+		text-align: center;
+	}
+
+	.evaluation_wrapper {
+		display: flex;
+		gap: 5rem;
+	}
+
+	.evaluation_form {
+		width: 50%;
+	}
+
+	.evaluation_form input {
+		width: 100%;
+	}
+
+	.evaluation_text {
+		width: 50%;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.header_image {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		background-position: center;
+		height: 55vh;
+		text-align: center;
+		display: block;
+		background-size: cover;
+	}
+</style>
