@@ -1,5 +1,6 @@
 <script lang="ts">
 	import header_image from '$lib/assets/headerImage.jfif';
+	import report_svg from '$lib/assets/report.svg';
 </script>
 
 <svelte:head>
@@ -33,40 +34,41 @@
 				>Fill out this quick and easy form to get a better idea of just how much your property could
 				be generating for you every month of the year!</span
 			>
+			<img src={report_svg} alt="home evaluation report" class="report_svg" />
 		</div>
 		<div class="evaluation_form">
 			<div class="field">
 				<label class="label" for="name">Name</label>
 				<div class="control">
-					<input class="input is-primary" type="text" placeholder="Text input" id="name" />
+					<input class="input " type="text" placeholder="" id="name" />
 				</div>
 			</div>
 
 			<div class="field">
 				<label class="label" for="name">Email</label>
 				<div class="control">
-					<input class="input is-primary" type="email" placeholder="Text input" id="name" />
+					<input class="input " type="email" placeholder="" id="name" />
 				</div>
 			</div>
 
 			<div class="field">
 				<label class="label" for="name">Property Address</label>
 				<div class="control">
-					<input class="input is-primary" type="text" placeholder="Text input" id="name" />
+					<input class="input " type="text" placeholder="" id="name" />
 				</div>
 			</div>
 
 			<div class="field">
 				<label class="label" for="name">Number of Bedrooms</label>
 				<div class="control">
-					<input class="input is-primary" type="text" placeholder="Text input" id="name" />
+					<input class="input " type="number" placeholder="" id="name" />
 				</div>
 			</div>
 
 			<div class="field">
 				<label class="label" for="name">Type of Property</label>
 				<div class="control">
-					<input class="input is-primary" type="text" placeholder="Text input" id="name" />
+					<input class="input " type="text" placeholder="" id="name" />
 				</div>
 			</div>
 
@@ -109,6 +111,10 @@
 		height: 55vh;
 	}
 
+	.report_svg {
+		width: 150px;
+		margin-top: auto;
+	}
 	.text_content {
 		display: flex;
 		align-items: center;
