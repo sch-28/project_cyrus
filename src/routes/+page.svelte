@@ -79,13 +79,8 @@
 	</div>
 </section>
 
-<section class="contact">
-	<div class="text_content">
-		<h1>Contact Us</h1>
-	</div>
-</section>
-
 <style>
+	
 	h1 {
 		font-weight: 600;
 		font-size: 2.5rem;
@@ -100,7 +95,6 @@
 		font-size: 1.25rem;
 		line-height: 2rem;
 	}
-
 	section {
 		min-height: 70px;
 		margin-bottom: 10rem;

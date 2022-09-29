@@ -10,8 +10,9 @@
 <header>
 	<ul>
 		<li class:active={is_url('/')}>
-			<!-- <a sveltekit:prefetch href="/">Home</a> -->
-			<img src={logo} alt="logo" />
+			<a sveltekit:prefetch href="/">
+				<img src={logo} alt="logo" />
+			</a>
 		</li>
 		<li class:active={is_url('/properties')} style="margin-left: auto;">
 			<a sveltekit:prefetch href="/properties">Properties</a>
@@ -25,8 +26,8 @@
 		<li class:active={is_url('/guide')}>
 			<a sveltekit:prefetch href="/guide">FAQs</a>
 		</li>
-		<li class:active={is_url('https://wa.me/34689105197')}>
-			<a sveltekit:prefetch href="https://wa.me/34689105197">Contact</a>
+		<li class:active={is_url('/about')}>
+			<a sveltekit:prefetch href="/about">About us</a>
 		</li>
 	</ul>
 </header>
