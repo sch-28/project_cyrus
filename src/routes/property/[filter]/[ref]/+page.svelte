@@ -146,15 +146,14 @@
 	}
 	.image_carousel {
 		position: absolute;
-		top: 0;
+		top: 100;
 		left: 0;
 		width: 100%;
-		z-index: -1;
-		height: calc(100vh - 200px);
+		height: calc(100vh - 250px);
 	}
 	.carousel_button {
 		position: absolute;
-		top: calc(calc(100vh - 150px) / 2);
+		top: calc(calc(100vh - 50px) / 2);
 		transform: translateY(-50%);
 		border: none;
 		padding: 15px;
