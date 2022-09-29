@@ -72,7 +72,7 @@
 <style>
 	.property {
 		height: 400px;
-		width: 300px;
+		width: 315px;
 		border: 1px solid rgba(0, 0, 0, 0.125);
 		display: flex;
 		flex-direction: column;
@@ -112,7 +112,7 @@
 
 	.property_stats {
 		display: flex;
-		gap: 10px;
+		gap: 5px;
 		width: 100%;
 		align-items: center;
 		justify-content: center;
