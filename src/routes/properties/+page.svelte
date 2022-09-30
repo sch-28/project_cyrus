@@ -7,12 +7,8 @@
 	import FormGroup from 'carbon-components-svelte/src/FormGroup/FormGroup.svelte';
 	import RadioButtonGroup from 'carbon-components-svelte/src/RadioButtonGroup/RadioButtonGroup.svelte';
 	import RadioButton from 'carbon-components-svelte/src/RadioButton/RadioButton.svelte';
-	import Select from 'carbon-components-svelte/src/Select/Select.svelte';
 	import PaginationNav from 'carbon-components-svelte/src/PaginationNav/PaginationNav.svelte';
-	import TextInput from 'carbon-components-svelte/src/TextInput/TextInput.svelte';
-	import SelectItem from 'carbon-components-svelte/src/Select/SelectItem.svelte';
-
-	import { Property_Types, Search_Query } from './search_api';
+	import { Search_Query } from './search_api';
 	import type { Location_Response } from './location_api';
 	import type { Search_Response } from './search_api';
 	import { goto } from '$app/navigation';

@@ -1,4 +1,3 @@
-import { goto } from '$app/navigation';
 import type { PageServerLoad } from './$types';
 import { api_location_request, type Location_Response } from './location_api';
 import { api_search_request, Search_Query, type Search_Response } from './search_api';
