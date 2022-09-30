@@ -53,8 +53,6 @@
 				{/if}
 			</div>
 			<div class="property_price">
-				<span>Asking Price</span>
-
 				<div>
 					{#if property.Price}
 						{number_to_euro(+property.Price)}
@@ -71,8 +69,8 @@
 
 <style>
 	.property {
-		height: 400px;
-		width: 315px;
+		height: 420px;
+		width: 310px;
 		border: 1px solid rgba(0, 0, 0, 0.125);
 		display: flex;
 		flex-direction: column;
@@ -125,6 +123,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin: auto 0;
+		margin-top: auto;
+		margin-left: auto;
 	}
 </style>

@@ -84,7 +84,7 @@
 		) as HTMLInputElement[];
 
 		for (let input_ref of input_refs) {
-			format_input(input_ref);
+			setTimeout(() => format_input(input_ref), 0);
 			input_ref.oninput = (event) => {
 				format_input(input_ref);
 			};
@@ -112,51 +112,70 @@
 	</FormGroup>
 
 	<FormGroup class="inline_select">
-		<!--  TYPE SELECT -->
-		<Select labelText="Types" name="property_type" bind:selected={params.property_type}>
-			<SelectItem value="0" text="All types" />
-			{#each Object.values(Property_Types) as type, index}
-				<SelectItem value={index + 1 + ''} text={type} />
-			{/each}
-		</Select>
-		<TextInput labelText="Reference" name="reference" />
+		<div class="field">
+			<label class="label" for="name">Types</label>
+			<div class="select">
+				<select value={params.property_type} name="property_type">
+					<option value="0">All types </option>
+					<option value="1">Apartment</option>
+					<option value="2">House</option>
+					<option value="3">Plot</option>
+					<option value="4">Commerical</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="field">
+			<label class="label" for="name">Reference</label>
+			<input class="input " name="reference" />
+		</div>
 	</FormGroup>
 
 	<!--  PRICE RANGE SELECT -->
 	<FormGroup class="inline_select">
 		<div class="currency_input_wrapper">
-			<TextInput
-				labelText="Min Price"
-				name="min_price"
-				bind:value={params.min_price}
-				type="currency"
-				min="0"
-			/>
+			<div class="field">
+				<label class="label" for="name">Min Price</label>
+				<input
+					class="input "
+					name="min_price"
+					bind:value={params.min_price}
+					type="currency"
+					min="0"
+				/>
+			</div>
 		</div>
 		<div class="currency_input_wrapper">
-			<TextInput
-				labelText="Max Price"
-				name="max_price"
-				bind:value={params.max_price}
-				type="currency"
-				min="0"
-			/>
+			<div class="field">
+				<label class="label" for="name">Max Price</label>
+				<input
+					class="input "
+					name="max_price"
+					bind:value={params.max_price}
+					type="currency"
+					min="0"
+				/>
+			</div>
 		</div>
 	</FormGroup>
 
 	<FormGroup class="inline_select">
-		<!--  BEDROOM SELECT -->
-		<Select labelText="Min Bedrooms" name="min_bedrooms" bind:selected={params.min_bedrooms}>
-			<SelectItem value="0" text="Min Bedrooms" />
-			{#each [...Array(6).keys()] as i}
-				<SelectItem value={i + 1 + ''} text={i + 1 + ''} />
-			{/each}
-		</Select>
+		<div class="field">
+			<label class="label" for="name">Min Bedrooms</label>
+			<input
+				class="input"
+				name="min_bedrooms"
+				bind:value={params.min_bedrooms}
+				type="number"
+				min="0"
+				max="6"
+			/>
+		</div>
 
 		<!--  LOCATION SELECT -->
 		{#if location_results && location_results.status}
 			<div class="autocomplete_container">
-				<label class="bx--label" for="autocomplete_location">Location</label>
+				<label class="label" for="autocomplete_location">Location</label>
 				<AutoComplete
 					inputId="autocomplete_location"
 					items={location_results.LocationData?.ProvinceArea.Locations.Location}
@@ -168,10 +187,16 @@
 			</div>
 		{/if}
 	</FormGroup>
-	<button type="submit" class="submit_button" name="locations" value={selected_locations.join(',')}
-		>Search
-	</button>
-	<a sveltekit:prefetch href="/properties" target="_self">Reset</a>
+
+	<div class="control">
+		<button
+			class="button is-link "
+			name="locations"
+			type="submit"
+			value={selected_locations.join(',')}>Search</button
+		>
+		<a sveltekit:prefetch href="/properties" target="_self">Reset</a>
+	</div>
 </Form>
 <!-- DISPLAY RESULTS -->
 <div class="results">
@@ -197,10 +222,21 @@
 </div>
 
 <style>
+	.control {
+		display: flex;
+		gap: 5px;
+		align-items: center;
+	}
+	.field,
+	select,
+	.select {
+		width: 100%;
+	}
 	.currency_input_wrapper::after {
 		content: '€';
 		position: absolute;
 		top: 50%;
+		transform: translateY(15%);
 		right: 10px;
 	}
 	.currency_input_wrapper {
@@ -221,8 +257,8 @@
 	.properties {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-evenly;
-		gap: 20px;
+		justify-content: center;
+		gap: 15px;
 	}
 
 	:global(.inline_select) {
@@ -238,25 +274,19 @@
 		width: 50%;
 	}
 
-	.submit_button {
-		cursor: pointer;
-		padding: 10px;
-		background-color: var(--cds-interactive-01, #0f62fe);
-		color: white;
-		border: none;
-		border-radius: 5px;
-		font-size: 1.1rem;
-		margin-right: 10px;
+	:global(.bx--radio-button__appearance) {
+		margin-top: 0;
 	}
 
 	.autocomplete_container {
 		display: flex;
-		width: 50%;
+		width: 100%;
 		flex-direction: column;
 	}
 
 	:global(.input-container) {
 		position: relative;
+		border-color: #dbdbdb !important;
 	}
 
 	:global(.autocomplete input) {
@@ -282,18 +312,32 @@
 		font-family: inherit;
 		opacity: 1;
 		transition: outline 70ms cubic-bezier(0.2, 0, 0.38, 0.9);
-		height: 2.5rem !important;
+		height: 2.4em !important;
+
+		background-color: white !important;
+		border-color: #dbdbdb !important;
+		border-radius: 4px !important;
+		color: #363636 !important;
 	}
 
 	:global(.autocomplete::after) {
-		border: unset !important;
-		border-bottom: 1px solid !important;
-		border-left: 1px solid !important;
-		border-radius: unset !important;
+		border-color: #485fc7 !important;
+		right: 1.125em;
+		z-index: 4;
 
-		height: 0.4em !important;
-		margin-top: 0 !important;
-		width: 0.4em !important;
-		border-color: #383737 !important;
+		border: 3px solid transparent;
+		border-radius: 2px;
+		border-right: 0;
+		border-top: 0;
+		content: ' ';
+		display: block;
+		height: 0.625em;
+		margin-top: -0.25em !important;
+		pointer-events: none;
+		position: absolute;
+		top: 50%;
+		transform: rotate(-45deg);
+		transform-origin: center;
+		width: 0.625em;
 	}
 </style>
