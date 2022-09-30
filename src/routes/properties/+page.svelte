@@ -109,9 +109,9 @@
 
 	<FormGroup class="inline_select">
 		<div class="field">
-			<label class="label" for="name">Types</label>
+			<label class="label" for="property_type">Types</label>
 			<div class="select">
-				<select value={params.property_type} name="property_type">
+				<select value={params.property_type} name="property_type" id="property_type">
 					<option value="0">All types </option>
 					<option value="1">Apartment</option>
 					<option value="2">House</option>
@@ -122,8 +122,8 @@
 		</div>
 
 		<div class="field">
-			<label class="label" for="name">Reference</label>
-			<input class="input " name="reference" />
+			<label class="label" for="reference">Reference</label>
+			<input class="input " name="reference" id="reference" />
 		</div>
 	</FormGroup>
 
@@ -131,25 +131,27 @@
 	<FormGroup class="inline_select">
 		<div class="currency_input_wrapper">
 			<div class="field">
-				<label class="label" for="name">Min Price</label>
+				<label class="label" for="min_price">Min Price</label>
 				<input
 					class="input "
 					name="min_price"
 					bind:value={params.min_price}
 					type="currency"
 					min="0"
+					id="min_price"
 				/>
 			</div>
 		</div>
 		<div class="currency_input_wrapper">
 			<div class="field">
-				<label class="label" for="name">Max Price</label>
+				<label class="label" for="max_price">Max Price</label>
 				<input
 					class="input "
 					name="max_price"
 					bind:value={params.max_price}
 					type="currency"
 					min="0"
+					id="max_price"
 				/>
 			</div>
 		</div>
@@ -157,7 +159,7 @@
 
 	<FormGroup class="inline_select">
 		<div class="field">
-			<label class="label" for="name">Min Bedrooms</label>
+			<label class="label" for="bedrooms">Min Bedrooms</label>
 			<input
 				class="input"
 				name="min_bedrooms"
@@ -165,6 +167,7 @@
 				type="number"
 				min="0"
 				max="6"
+				id="bedrooms"
 			/>
 		</div>
 
