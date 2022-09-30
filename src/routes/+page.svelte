@@ -191,7 +191,7 @@
 
 	.evaluation_wrapper {
 		display: flex;
-		flex-wrap: wrap;
+		/* flex-wrap: wrap; */
 		justify-content: center;
 		gap: 5rem;
 	}
