@@ -3,7 +3,7 @@
 	import report_svg from '$lib/assets/report.svg';
 
 	let selected_type: string = '0';
-	let selected_price: string = '200.000';
+	let selected_price: string = '500.000';
 
 	function search() {}
 </script>
@@ -128,6 +128,7 @@
 		border-radius: 1rem;
 		margin: auto auto;
 		display: flex;
+		flex-wrap: wrap;
 		gap: 10px;
 	}
 
@@ -190,6 +191,8 @@
 
 	.evaluation_wrapper {
 		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 5rem;
 	}
 

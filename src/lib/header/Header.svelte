@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import logo from '$lib/assets/Logo_white.png';
+	import whatsapp_logo from '$lib/assets/whatsapp.png';
 
 	$: is_url = (url: string) => {
 		return $page.url.pathname === url;
@@ -17,17 +18,22 @@
 		<li class:active={is_url('/properties')} style="margin-left: auto;">
 			<a sveltekit:prefetch href="/properties">Properties</a>
 		</li>
-		<li class:active={is_url('/propertymanagement')}>
+		<!-- <li class:active={is_url('/propertymanagement')}>
 			<a sveltekit:prefetch href="/propertymanagement">Property Management</a>
-		</li>
+		</li> -->
 		<li class:active={is_url('https://varzirealty.staydirectly.com/')}>
 			<a sveltekit:prefetch href="https://varzirealty.staydirectly.com/">Short-Term Rentals</a>
 		</li>
-		<li class:active={is_url('/guide')}>
+		<!-- <li class:active={is_url('/guide')}>
 			<a sveltekit:prefetch href="/guide">FAQs</a>
-		</li>
+		</li> -->
 		<li class:active={is_url('/about')}>
 			<a sveltekit:prefetch href="/about">About us</a>
+		</li>
+		<li class:active={is_url('/https://wa.me/34689105197')}>
+			<a sveltekit:prefetch href="https://wa.me/34689105197">
+				<img class="whatsapp_logo" src={whatsapp_logo} alt="whatsapp logo" />
+			</a>
 		</li>
 	</ul>
 </header>
@@ -37,6 +43,9 @@
         background-color: gray;
     } */
 
+	.whatsapp_logo {
+		width: 50px;
+	}
 	header {
 		box-shadow: 0 2px 2.5px rgba(0, 0, 0, 0.1);
 		width: 100%;
