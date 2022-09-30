@@ -59,33 +59,7 @@
 		goto(`/property/${params.purchase_type}/${property.Reference}`);
 	}
 
-	function format_value(value: string) {
-		// remove any invalid characters
-		const number = Number(String(value).replace(/[^0-9,-]+/g, ''));
-		// remove € sign and whitepsaces
-		const formatted_number = number_to_euro(number).replace('€', '').replace(/\s+/g, '');
-		return formatted_number;
-	}
-
-	function format_input(input: HTMLInputElement) {
-		const value = input.value;
-
-		input.value = format_value(value);
-	}
-
-	onMount(() => {
-		// query all currency input fields
-		const input_refs = Array.from(
-			document.querySelectorAll("input[type='currency'")
-		) as HTMLInputElement[];
-
-		for (let input_ref of input_refs) {
-			setTimeout(() => format_input(input_ref), 0);
-			input_ref.oninput = (event) => {
-				format_input(input_ref);
-			};
-		}
-	});
+	
 </script>
 
 <svelte:head>

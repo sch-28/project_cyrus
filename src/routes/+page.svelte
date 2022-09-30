@@ -1,6 +1,11 @@
 <script lang="ts">
 	import header_image from '$lib/assets/headerImage.jfif';
 	import report_svg from '$lib/assets/report.svg';
+
+	let selected_type: string = '0';
+	let selected_price: string = '200.000';
+
+	function search() {}
 </script>
 
 <svelte:head>
@@ -10,6 +15,41 @@
 
 <section class="landing">
 	<div class="header_image" style={`background-image: url(${header_image})`} />
+	<div class="quick_search">
+		<div class="field">
+			<label class="label" for="property_type">Types</label>
+			<div class="select">
+				<select name="property_type" id="property_type" bind:value={selected_type}>
+					<option value="0">All types </option>
+					<option value="1">Apartment</option>
+					<option value="2">House</option>
+					<option value="3">Plot</option>
+					<option value="4">Commerical</option>
+				</select>
+			</div>
+		</div>
+		<div class="currency_input_wrapper">
+			<div class="field">
+				<label class="label" for="max_price">Max Price</label>
+				<input
+					class="input "
+					name="max_price"
+					id="max_price"
+					type="currency"
+					bind:value={selected_price}
+					min="0"
+				/>
+			</div>
+		</div>
+
+		<div class="control">
+			<a
+				class="button is-link"
+				sveltekit:prefetch
+				href={`/properties?property_type=${selected_type}&max_price=${selected_price}`}>Search</a
+			>
+		</div>
+	</div>
 </section>
 
 <section class="description">
@@ -45,23 +85,23 @@
 			</div>
 
 			<div class="field">
-				<label class="label" for="name">Email</label>
+				<label class="label" for="email">Email</label>
 				<div class="control">
-					<input class="input " type="email" placeholder="" id="name" />
+					<input class="input " type="email" placeholder="" id="email" />
 				</div>
 			</div>
 
 			<div class="field">
-				<label class="label" for="name">Property Address</label>
+				<label class="label" for="address">Property Address</label>
 				<div class="control">
-					<input class="input " type="text" placeholder="" id="name" />
+					<input class="input " type="text" placeholder="" id="address" />
 				</div>
 			</div>
 
 			<div class="field">
-				<label class="label" for="name">Number of Bedrooms</label>
+				<label class="label" for="bedrooms">Number of Bedrooms</label>
 				<div class="control">
-					<input class="input " type="number" placeholder="" id="name" />
+					<input class="input " type="number" placeholder="" id="bedrooms" />
 				</div>
 			</div>
 
@@ -80,7 +120,37 @@
 </section>
 
 <style>
-	
+	.quick_search {
+		z-index: 3;
+		position: relative;
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 20px;
+		border-radius: 1rem;
+		margin: auto auto;
+		display: flex;
+		gap: 10px;
+	}
+
+	.currency_input_wrapper::after {
+		content: '€';
+		position: absolute;
+		top: 50%;
+		transform: translateY(-12%);
+		right: 10px;
+	}
+
+	.currency_input_wrapper {
+		position: relative;
+	}
+
+	.quick_search a {
+		margin-top: 2rem;
+	}
+
+	.quick_search label {
+		color: white;
+	}
+
 	h1 {
 		font-weight: 600;
 		font-size: 2.5rem;
@@ -97,12 +167,13 @@
 	}
 	section {
 		min-height: 70px;
-		margin-bottom: 10rem;
+		margin-bottom: 7rem;
 		width: 100%;
 	}
 
 	section.landing {
 		height: 55vh;
+		display: flex;
 	}
 
 	.report_svg {
