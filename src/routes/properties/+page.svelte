@@ -51,15 +51,12 @@
 
 	function submit_form() {
 		const form = document.getElementById('form') as HTMLFormElement | null;
-		params = new Search_Query();
 		form?.submit();
 	}
 
 	function show_property(property: Property_Type) {
 		goto(`/property/${params.purchase_type}/${property.Reference}`);
 	}
-
-	
 </script>
 
 <svelte:head>
@@ -161,15 +158,35 @@
 		{/if}
 	</FormGroup>
 
-	<div class="control">
-		<button
-			class="button is-link "
-			name="locations"
-			type="submit"
-			value={selected_locations.join(',')}>Search</button
-		>
-		<a sveltekit:prefetch href="/properties" target="_self">Reset</a>
-	</div>
+	<!-- Main container -->
+	<nav class="level">
+		<!-- Left side -->
+		<div class="level-left">
+			<div class="level-item">
+				<button
+					class="button is-link "
+					name="locations"
+					type="submit"
+					value={selected_locations.join(',')}>Search</button
+				>
+			</div>
+			<div class="level-item">
+				<a sveltekit:prefetch href="/properties" target="_self">Reset</a>
+			</div>
+		</div>
+
+		<!-- Right side -->
+		<div class="level-right">
+			<div class="level-item">
+				<div class="select">
+					<select bind:value={params.sort} on:change="{submit_form}" name="sort">
+						<option value="0">Price Ascending</option>
+						<option value="1">Price Descending</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</nav>
 </Form>
 <!-- DISPLAY RESULTS -->
 <div class="results">
