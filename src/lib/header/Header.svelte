@@ -61,4 +61,9 @@
 	.whatsapp_logo {
 		width: 50px;
 	}
+
+	.navbar {
+		max-width: 1024px;
+		margin: 0 auto;
+	}
 </style>
