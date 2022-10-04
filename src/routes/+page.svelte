@@ -65,8 +65,8 @@
 </section>
 
 <section class="evaluation">
-	<div class="evaluation_wrapper">
-		<div class="evaluation_text">
+	<div class="evaluation_wrapper tile is-ancestor">
+		<div class="evaluation_text tile">
 			<h1>Your Property Has Potential</h1>
 			<h3>Find out how much you could be making.</h3>
 			<br />
@@ -76,7 +76,7 @@
 			>
 			<img src={report_svg} alt="home evaluation report" class="report_svg" />
 		</div>
-		<div class="evaluation_form">
+		<div class="evaluation_form tile">
 			<div class="field">
 				<label class="label" for="name">Name</label>
 				<div class="control">
@@ -109,6 +109,13 @@
 				<label class="label" for="name">Type of Property</label>
 				<div class="control">
 					<input class="input " type="text" placeholder="" id="name" />
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label" for="name">Message</label>
+				<div class="control">
+					<textarea class="textarea" placeholder="" rows="3" />
 				</div>
 			</div>
 
@@ -190,14 +197,16 @@
 	}
 
 	.evaluation_wrapper {
-		display: flex;
+		/* display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
+		gap: 5rem; */
 		gap: 5rem;
 	}
 
 	.evaluation_form {
-		width: 50%;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.evaluation_form input {
@@ -205,7 +214,6 @@
 	}
 
 	.evaluation_text {
-		width: 50%;
 		display: flex;
 		align-items: center;
 		flex-direction: column;
