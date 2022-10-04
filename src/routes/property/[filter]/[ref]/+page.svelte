@@ -59,7 +59,7 @@
 		{/if}
 	</div>
 	<div class="spacer" />
-
+	<strong style="margin: 0 auto 20px auto;">{data.ref}</strong>
 	<div class="stats">
 		{#if +data.results.Property.Bedrooms}
 			<div class="stat">
