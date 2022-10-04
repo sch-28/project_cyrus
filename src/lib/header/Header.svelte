@@ -36,17 +36,22 @@
 
 		<div class="navbar-end">
 			<a class="navbar-item" sveltekit:prefetch href="/properties">Properties</a>
-			<a class="navbar-item" sveltekit:prefetch href="/propertymanagement">Property Management</a>
-			<a class="navbar-item" sveltekit:prefetch href="https://varzirealty.staydirectly.com/"
-				>Short-Term Rentals</a
-			>
-			<a class="navbar-item" sveltekit:prefetch href="/guide">FAQs</a>
 			<a class="navbar-item" sveltekit:prefetch href="/about">About us</a>
-			<div class="navbar-item">
-				<div class="buttons">
-					<a sveltekit:prefetch href="https://wa.me/34689105197">
-						<img class="whatsapp_logo" src={whatsapp_logo} alt="whatsapp logo" />
-					</a>
+
+			<div class="navbar-item has-dropdown is-hoverable">
+				<a class="navbar-link" href={'javascript:;'}> More </a>
+
+				<div class="navbar-dropdown">
+					<a class="navbar-item" sveltekit:prefetch href="/propertymanagement"
+						>Property Management</a
+					>
+
+					<a class="navbar-item" sveltekit:prefetch href="https://varzirealty.staydirectly.com/"
+						>Short-Term Rentals</a
+					>
+					<a class="navbar-item" sveltekit:prefetch href="/guide">FAQs</a>
+					<!-- <hr class="navbar-divider" />
+					<div class="navbar-item" /> -->
 				</div>
 			</div>
 		</div>
@@ -56,10 +61,6 @@
 <style>
 	:global(.navbar-item img) {
 		max-height: unset !important;
-	}
-
-	.whatsapp_logo {
-		width: 50px;
 	}
 
 	.navbar {

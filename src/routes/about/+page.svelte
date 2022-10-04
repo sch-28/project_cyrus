@@ -3,6 +3,8 @@
 	import superhost_image from '$lib/assets/superhost.png';
 	import airbng_image from '$lib/assets/airbnb.png';
 	import booking_image from '$lib/assets/booking.png';
+
+	import whatsapp_logo from '$lib/assets/whatsapp.png';
 </script>
 
 <svelte:head>
@@ -47,6 +49,11 @@
 </span>
 <div class="spacer" />
 <h1>Send us a message!</h1>
+<div class="whatsapp">
+	<a sveltekit:prefetch href="https://wa.me/34689105197">
+		<img class="whatsapp_logo" src={whatsapp_logo} alt="whatsapp logo" />
+	</a>
+</div>
 
 <div class="contact_form">
 	<div class="field">
@@ -133,5 +140,13 @@
 		font-size: 1.25rem;
 		line-height: 2rem;
 		margin-left: 1em;
+	}
+	.whatsapp_logo {
+		width: 50px;
+
+	}
+	.whatsapp{
+		margin: 0 auto;
+		display: block;
 	}
 </style>
