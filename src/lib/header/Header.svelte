@@ -6,79 +6,59 @@
 	$: is_url = (url: string) => {
 		return $page.url.pathname === url;
 	};
+	let expand_menu = false;
 </script>
 
-<header>
-	<ul>
-		<li class:active={is_url('/')}>
-			<a sveltekit:prefetch href="/">
-				<img src={logo} alt="logo" />
-			</a>
-		</li>
-		<li class:active={is_url('/properties')} style="margin-left: auto;">
-			<a sveltekit:prefetch href="/properties">Properties</a>
-		</li>
-		<!-- <li class:active={is_url('/propertymanagement')}>
-			<a sveltekit:prefetch href="/propertymanagement">Property Management</a>
-		</li> -->
-		<li class:active={is_url('https://varzirealty.staydirectly.com/')}>
-			<a sveltekit:prefetch href="https://varzirealty.staydirectly.com/">Short-Term Rentals</a>
-		</li>
-		<!-- <li class:active={is_url('/guide')}>
-			<a sveltekit:prefetch href="/guide">FAQs</a>
-		</li> -->
-		<li class:active={is_url('/about')}>
-			<a sveltekit:prefetch href="/about">About us</a>
-		</li>
-		<li class:active={is_url('/https://wa.me/34689105197')}>
-			<a sveltekit:prefetch href="https://wa.me/34689105197">
-				<img class="whatsapp_logo" src={whatsapp_logo} alt="whatsapp logo" />
-			</a>
-		</li>
-	</ul>
-</header>
+<nav class="navbar " aria-label="main navigation">
+	<div class="navbar-brand">
+		<a class="navbar-item" sveltekit:prefetch href="/">
+			<img src="Logo_white.png" width="100" alt="logo" />
+		</a>
+
+		<a
+			data-sveltekit-prefetch
+			href="/"
+			class:is-active={expand_menu}
+			on:click={() => (expand_menu = !expand_menu)}
+			role="button"
+			class="navbar-burger "
+			aria-label="menu"
+			aria-expanded="false"
+		>
+			<span aria-hidden="true" />
+			<span aria-hidden="true" />
+			<span aria-hidden="true" />
+		</a>
+	</div>
+
+	<div class="navbar-menu" class:is-active={expand_menu}>
+		<div class="navbar-start" />
+
+		<div class="navbar-end">
+			<a class="navbar-item" sveltekit:prefetch href="/properties">Properties</a>
+			<a class="navbar-item" sveltekit:prefetch href="/propertymanagement">Property Management</a>
+			<a class="navbar-item" sveltekit:prefetch href="https://varzirealty.staydirectly.com/"
+				>Short-Term Rentals</a
+			>
+			<a class="navbar-item" sveltekit:prefetch href="/guide">FAQs</a>
+			<a class="navbar-item" sveltekit:prefetch href="/about">About us</a>
+			<div class="navbar-item">
+				<div class="buttons">
+					<a sveltekit:prefetch href="https://wa.me/34689105197">
+						<img class="whatsapp_logo" src={whatsapp_logo} alt="whatsapp logo" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
 
 <style>
-	/* li.active{
-        background-color: gray;
-    } */
+	:global(.navbar-item img) {
+		max-height: unset !important;
+	}
 
 	.whatsapp_logo {
 		width: 50px;
-	}
-	header {
-		box-shadow: 0 2px 2.5px rgba(0, 0, 0, 0.1);
-		width: 100%;
-	}
-
-	ul {
-		display: flex;
-		justify-content: center;
-		gap: 30px;
-		max-width: 1024px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	li a {
-		color: black;
-		text-decoration: none;
-		font-size: 1.15rem;
-	}
-
-	li {
-		padding: 10px;
-		border-radius: 5px;
-		display: flex;
-		align-items: center;
-	}
-
-	li:hover {
-		/* background-color: rgba(0, 0, 0, 0.1); */
-	}
-
-	li img {
-		width: 150px;
-		cursor: pointer;
 	}
 </style>
