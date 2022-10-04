@@ -8,11 +8,10 @@
 	import RadioButtonGroup from 'carbon-components-svelte/src/RadioButtonGroup/RadioButtonGroup.svelte';
 	import RadioButton from 'carbon-components-svelte/src/RadioButton/RadioButton.svelte';
 	import PaginationNav from 'carbon-components-svelte/src/PaginationNav/PaginationNav.svelte';
-	import { Search_Query } from './search_api';
+	import type { Search_Query } from './search_api';
 	import type { Location_Response } from './location_api';
 	import type { Search_Response } from './search_api';
 	import { goto } from '$app/navigation';
-	import { onMount } from 'svelte';
 
 	export let data: { params: Search_Query; results: [Search_Response, Location_Response] };
 
