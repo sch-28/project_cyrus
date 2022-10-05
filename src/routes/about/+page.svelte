@@ -64,16 +64,16 @@
 	</div>
 
 	<div class="field">
-		<label class="label" for="name">Email</label>
+		<label class="label" for="email">Email</label>
 		<div class="control">
-			<input class="input " type="email" placeholder="" id="name" />
+			<input class="input " type="email" placeholder="" id="email" />
 		</div>
 	</div>
 
 	<div class="field">
-		<label class="label" for="name">Message</label>
+		<label class="label" for="message">Message</label>
 		<div class="control">
-			<textarea class="textarea" placeholder="" />
+			<textarea class="textarea" placeholder="" id="message"/>
 		</div>
 	</div>
 

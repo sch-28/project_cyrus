@@ -18,7 +18,7 @@
 
 		<a
 			data-sveltekit-prefetch
-			href="/"
+			href="{'javascript:;'}"
 			class:is-active={expand_menu}
 			on:click={() => (expand_menu = !expand_menu)}
 			role="button"
