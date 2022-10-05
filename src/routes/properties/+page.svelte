@@ -12,7 +12,11 @@
 	import type { Search_Response } from './search_api';
 	import { goto } from '$app/navigation';
 
-	export let data: { params: Search_Query; results: [Search_Response, Location_Response] };
+	export let data: {
+		params: Search_Query;
+		results: [Search_Response, Location_Response];
+		filter: string;
+	};
 
 	let params: Search_Query;
 	let search_results: Search_Response;
@@ -176,7 +180,7 @@
 		<div class="level-right">
 			<div class="level-item">
 				<div class="select">
-					<select bind:value={params.sort} on:change="{submit_form}" name="sort">
+					<select bind:value={params.sort} on:change={submit_form} name="sort">
 						<option value="0">Price Ascending</option>
 						<option value="1">Price Descending</option>
 					</select>

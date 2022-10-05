@@ -11,5 +11,5 @@ export const load: PageServerLoad = async (load_event) => {
 	const results = await api_detail_request(filter,ref);
 
 
-	return { results: results, ref: load_event.params.ref};
+	return { results: results, ref: load_event.params.ref, filter:filter};
 };

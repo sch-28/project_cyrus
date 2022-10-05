@@ -4,7 +4,7 @@
 	import Favorite from 'carbon-icons-svelte/lib/Favorite.svelte';
 	import { favorites } from '$lib/store';
 	import FavoriteFilled from 'carbon-icons-svelte/lib/FavoriteFilled.svelte';
-	export let data: { ref: string; results: Detail_Response };
+	export let data: { ref: string; results: Detail_Response; filter: string };
 
 	let selected_image = 0;
 

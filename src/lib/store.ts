@@ -33,7 +33,7 @@ const storage = <T>(key: string, initValue: T): Writable<T> => {
 export default storage;
 
 export interface Favorites {
-	favorites: { ref: string; results: Detail_Response }[];
+	favorites: { ref: string; results: Detail_Response; filter: string }[];
 }
 
 export const favorites = storage<Favorites>('favorites', { favorites: [] });
