@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Form from '$lib/form.svelte';
-import { favorites } from '$lib/store';
+	import { favorites } from '$lib/store';
 	import { number_to_euro } from '$lib/util';
 
 	function remove_favorite(ref: string) {
@@ -8,7 +8,6 @@ import { favorites } from '$lib/store';
 			return { favorites: v.favorites.filter((v) => v.ref != ref) };
 		});
 	}
-	
 </script>
 
 <h1>Favorites</h1>
@@ -35,7 +34,13 @@ import { favorites } from '$lib/store';
 								<strong>{fav.ref}</strong>
 							</div>
 							<div class="stats">
-								{number_to_euro(fav.results.Property.Price)}
+								{#if fav.results.Property.Price}
+									{number_to_euro(+fav.results.Property.Price)}
+								{:else}
+									Short Term: {number_to_euro(fav.results.Property.RentalPrice1)} / Week
+									<br />
+									Long Term: {number_to_euro(fav.results.Property.RentalPrice2)} / Month
+								{/if}
 							</div>
 						</div>
 					</div>
@@ -58,7 +63,7 @@ import { favorites } from '$lib/store';
 	<br />
 	<h1>Contact</h1>
 	<div class="contact_form">
-	<Form></Form>	
+		<Form />
 	</div>
 </div>
 
@@ -93,6 +98,4 @@ import { favorites } from '$lib/store';
 	.level-left {
 		color: black;
 	}
-
-	
 </style>
