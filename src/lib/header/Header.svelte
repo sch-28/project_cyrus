@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/assets/Logo_white.png';
 	import whatsapp_logo from '$lib/assets/whatsapp.png';
+	import Favorite from 'carbon-icons-svelte/lib/Favorite.svelte';
 
 	$: is_url = (url: string) => {
 		return $page.url.pathname === url;
@@ -54,6 +55,10 @@
 					<div class="navbar-item" /> -->
 				</div>
 			</div>
+
+			<a class="navbar-item" sveltekit:prefetch href="/favorites">
+				<Favorite size={20} />
+			</a>
 		</div>
 	</div>
 </nav>

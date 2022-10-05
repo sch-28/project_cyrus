@@ -1,8 +1,9 @@
 <script lang="ts">
-	import Property from '$lib/property/property.svelte';
 	import { number_to_euro } from '$lib/util';
 	import type { Detail_Response } from './detail_api';
-
+	import Favorite from 'carbon-icons-svelte/lib/Favorite.svelte';
+	import { favorites } from '$lib/store';
+	import FavoriteFilled from 'carbon-icons-svelte/lib/FavoriteFilled.svelte';
 	export let data: { ref: string; results: Detail_Response };
 
 	let selected_image = 0;
@@ -29,6 +30,21 @@
 
 	function show_image(index: number) {
 		selected_image = index;
+	}
+
+	$: is_favorite = $favorites.favorites.find((f) => f.ref == data.ref);
+
+	function add_favorite() {
+		if (is_favorite) {
+			favorites.update((v) => {
+				return { favorites: v.favorites.filter((v) => v.ref != data.ref) };
+			});
+		} else {
+			favorites.update((v) => {
+				v.favorites.push(data);
+				return v;
+			});
+		}
 	}
 </script>
 
@@ -102,10 +118,20 @@
 			<span>Asking Price</span>
 		</div>
 	</div>
+	<div class="favorite" on:click={add_favorite}>
+		{#if !is_favorite}
+			<Favorite size={32} />
+		{:else}
+			<FavoriteFilled size={32} />
+		{/if}
+	</div>
 	<p class="description">{data.results.Property.Description}</p>
 {/if}
 
 <style>
+	.favorite {
+		margin: 25px auto;
+	}
 	.bubbles {
 		top: calc(100vh - 225px);
 		position: absolute;
@@ -126,9 +152,6 @@
 		background-color: rgba(255, 255, 255, 0.8);
 	}
 
-	.description {
-		margin-top: 50px;
-	}
 	.stats {
 		display: flex;
 		gap: 20px;
