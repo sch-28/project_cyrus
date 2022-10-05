@@ -119,6 +119,8 @@
 		</div>
 	</div>
 	<div class="favorite" on:click={add_favorite}>
+		<span>Add to favorites</span>
+
 		{#if !is_favorite}
 			<Favorite size={32} />
 		{:else}
@@ -131,6 +133,9 @@
 <style>
 	.favorite {
 		margin: 25px auto;
+		display: flex;
+		align-items: center;
+		gap: 5px;
 	}
 	.bubbles {
 		top: calc(100vh - 225px);
