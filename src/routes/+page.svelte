@@ -184,13 +184,14 @@
 					</div>
 				</div>
 
+				<input
+					type="hidden"
+					value={$favorites.favorites.map((f) => f.ref).join(',')}
+					name="references"
+				/>
+
 				<div class="control">
-					<button
-						class="button is-link"
-						value={$favorites.favorites.map((f) => f.ref).join(',')}
-						name="references"
-						on:click={submit_form}>Submit</button
-					>
+					<button type="submit" class="button is-link" on:click={submit_form}>Submit</button>
 					<a class="button" href={''} target="_self">Reset</a>
 				</div>
 			</form>

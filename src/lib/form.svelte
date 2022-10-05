@@ -66,15 +66,10 @@
 			<textarea class="textarea" placeholder="" id="message" name="message" />
 		</div>
 	</div>
-
+	<input type="hidden" value={$favorites.favorites.map((f) => f.ref).join(',')} name="references" />
 	<div class="control" style="margin-left:auto;">
-		<button
-			class="button is-link"
-			style="margin-left:auto;"
-			type="submit"
-			value={$favorites.favorites.map((f) => f.ref).join(',')}
-			name="references"
-			on:click={submit_form}>Submit</button
+		<button class="button is-link" style="margin-left:auto;" type="submit" on:click={submit_form}
+			>Submit</button
 		>
 		<a class="button" href={''} target="_self">Reset</a>
 	</div>

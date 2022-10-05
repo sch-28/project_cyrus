@@ -51,7 +51,6 @@ export const POST: RequestHandler = async (event) => {
 		content[pair[0]] = pair[1];
 	}
 	const result = await verify_token(content['token']);
-
 	if (result) {
 		await send_mail(mail_content);
 	}
