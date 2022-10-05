@@ -3,6 +3,9 @@
 	import superhost_image from '$lib/assets/superhost.png';
 	import airbng_image from '$lib/assets/airbnb.png';
 	import booking_image from '$lib/assets/booking.png';
+
+	import whatsapp_logo from '$lib/assets/whatsapp.png';
+	import Form from '$lib/form.svelte';
 </script>
 
 <svelte:head>
@@ -47,33 +50,13 @@
 </span>
 <div class="spacer" />
 <h1>Send us a message!</h1>
-
-<div class="contact_form">
-	<div class="field">
-		<label class="label" for="name">Name</label>
-		<div class="control">
-			<input class="input " type="text" placeholder="" id="name" />
-		</div>
-	</div>
-
-	<div class="field">
-		<label class="label" for="name">Email</label>
-		<div class="control">
-			<input class="input " type="email" placeholder="" id="name" />
-		</div>
-	</div>
-
-	<div class="field">
-		<label class="label" for="name">Message</label>
-		<div class="control">
-			<textarea class="textarea" placeholder="" />
-		</div>
-	</div>
-
-	<div class="control" style="margin-left:auto;">
-		<button class="button is-link" style="margin-left:auto;">Submit</button>
-	</div>
+<div class="whatsapp">
+	<a sveltekit:prefetch href="https://wa.me/34689105197">
+		<img class="whatsapp_logo" src={whatsapp_logo} alt="whatsapp logo" />
+	</a>
 </div>
+
+<Form />
 
 <style>
 	h1,
@@ -133,5 +116,12 @@
 		font-size: 1.25rem;
 		line-height: 2rem;
 		margin-left: 1em;
+	}
+	.whatsapp_logo {
+		width: 50px;
+	}
+	.whatsapp {
+		margin: 0 auto;
+		display: block;
 	}
 </style>

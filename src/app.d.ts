@@ -1,4 +1,5 @@
 declare module 'simple-svelte-autocomplete';
+declare var grecaptcha: any;
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces

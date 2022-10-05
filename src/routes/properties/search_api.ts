@@ -15,6 +15,7 @@ export class Search_Query {
 	min_bedrooms: number;
 	property_type: string;
 	page: number;
+	sort: string;
 
 	constructor() {
 		this.purchase_type = 1;
@@ -24,6 +25,7 @@ export class Search_Query {
 		this.min_bedrooms = 0;
 		this.property_type = "0";
 		this.page = 1;
+		this.sort = "1";
 	}
 }
 export interface PropertyType {
@@ -123,7 +125,7 @@ export async function api_search_request(search_query: Search_Query) {
 	parameters.push({ name: 'p_images', value: 1 });
 	parameters.push({ name: 'p_pageno', value: search_query.page });
 	parameters.push({ name: 'p_propertyTypes', value: `${search_query.property_type}-1` });
-	parameters.push({ name: 'p_sortType', value: `1` });
+	parameters.push({ name: 'p_sortType', value: search_query.sort });
 
 	const result = await request<Search_Response>('SearchProperties', parameters);
 

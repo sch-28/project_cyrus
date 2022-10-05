@@ -1,4 +1,4 @@
-import { VITE_API_KEY, VITE_API_IDENTIFIER } from '$env/static/private';
+import { API_KEY, API_IDENTIFIER } from '$env/static/private';
 
 interface Success_Response {
 	transaction: {
@@ -26,7 +26,7 @@ export async function request<T extends Response>(
 		method: 'GET'
 	};
 
-	let request_url = `https://webapi.resales-online.com/V6/${destination}?p1=${VITE_API_IDENTIFIER}&p2=${VITE_API_KEY}&P_output=JSON&`;
+	let request_url = `https://webapi.resales-online.com/V6/${destination}?p1=${API_IDENTIFIER}&p2=${API_KEY}&P_output=JSON&`;
 
 	for (let entry of parameters) {
 		request_url += `${entry.name}=${entry.value}&`;

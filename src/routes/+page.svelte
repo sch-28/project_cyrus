@@ -1,11 +1,36 @@
 <script lang="ts">
 	import header_image from '$lib/assets/headerImage.jfif';
 	import report_svg from '$lib/assets/report.svg';
-
+	import { locations } from './properties/locations';
+	import { favorites } from '$lib/store';
+	import AutoComplete from 'simple-svelte-autocomplete';
+	import { CAPTCHA_SITE_KEY } from '$env/static/private';
 	let selected_type: string = '0';
-	let selected_price: string = '500.000';
+	let selected_price: string = '';
+	let selected_locations: string[] = [];
+	let selected_purchase_type: string = '1';
 
-	function search() {}
+	let form: HTMLFormElement;
+	let token_input: HTMLInputElement;
+
+	async function submit_form(e: Event) {
+		e.preventDefault();
+
+		if (!form.checkValidity()) {
+			form.reportValidity();
+			return;
+		}
+
+		await new Promise((resolve, reject) => {
+			// grecaptcha.ready needs a callback so we create a promise to await
+			grecaptcha.ready(resolve);
+		});
+		// grecaptcha.execute returns a promise so we can await it
+		grecaptcha.execute(CAPTCHA_SITE_KEY, { action: 'submit' }).then(function (new_token: string) {
+			token_input.value = new_token;
+			form.submit();
+		});
+	}
 </script>
 
 <svelte:head>
@@ -16,6 +41,17 @@
 <section class="landing">
 	<div class="header_image" style={`background-image: url(${header_image})`} />
 	<div class="quick_search">
+		<div class="field">
+			<label class="label" for="purchase_type">Option</label>
+			<div class="select">
+				<select bind:value={selected_purchase_type} id="purchase_type">
+					<option value="1">Buy</option>
+					<option value="2">Short Term Rent</option>
+					<option value="3">Long Term Rent</option>
+				</select>
+			</div>
+		</div>
+
 		<div class="field">
 			<label class="label" for="property_type">Types</label>
 			<div class="select">
@@ -41,12 +77,24 @@
 				/>
 			</div>
 		</div>
-
+		<div class="autocomplete_container">
+			<label class="label" for="autocomplete_location">Location</label>
+			<AutoComplete
+				inputId="autocomplete_location"
+				items={locations}
+				bind:selectedItem={selected_locations}
+				placeholder="All locations"
+				showClear
+				multiple
+			/>
+		</div>
 		<div class="control">
 			<a
 				class="button is-link"
 				sveltekit:prefetch
-				href={`/properties?property_type=${selected_type}&max_price=${selected_price}`}>Search</a
+				href={`/properties?property_type=${selected_type}&max_price=${selected_price}&locations=${selected_locations.join(
+					','
+				)}&purchase_type=${selected_purchase_type}`}>Search</a
 			>
 		</div>
 	</div>
@@ -65,8 +113,8 @@
 </section>
 
 <section class="evaluation">
-	<div class="evaluation_wrapper">
-		<div class="evaluation_text">
+	<div class="evaluation_wrapper tile is-ancestor">
+		<div class="evaluation_text tile">
 			<h1>Your Property Has Potential</h1>
 			<h3>Find out how much you could be making.</h3>
 			<br />
@@ -76,45 +124,77 @@
 			>
 			<img src={report_svg} alt="home evaluation report" class="report_svg" />
 		</div>
-		<div class="evaluation_form">
-			<div class="field">
-				<label class="label" for="name">Name</label>
-				<div class="control">
-					<input class="input " type="text" placeholder="" id="name" />
-				</div>
-			</div>
+		<div class="evaluation_form tile">
+			<form action="/api/mail" method="post" bind:this={form}>
+				<input type="hidden" name="token" bind:this={token_input} />
 
-			<div class="field">
-				<label class="label" for="email">Email</label>
-				<div class="control">
-					<input class="input " type="email" placeholder="" id="email" />
+				<div class="field">
+					<label class="label" for="name">Name</label>
+					<div class="control">
+						<input class="input " type="text" placeholder="" id="name" required name="name" />
+					</div>
 				</div>
-			</div>
 
-			<div class="field">
-				<label class="label" for="address">Property Address</label>
-				<div class="control">
-					<input class="input " type="text" placeholder="" id="address" />
+				<div class="field">
+					<label class="label" for="email">Email</label>
+					<div class="control">
+						<input class="input " type="email" placeholder="" id="email" required name="email" />
+					</div>
 				</div>
-			</div>
 
-			<div class="field">
-				<label class="label" for="bedrooms">Number of Bedrooms</label>
-				<div class="control">
-					<input class="input " type="number" placeholder="" id="bedrooms" />
+				<div class="field">
+					<label class="label" for="address">Property Address</label>
+					<div class="control">
+						<input class="input " type="text" placeholder="" id="address" required name="address" />
+					</div>
 				</div>
-			</div>
 
-			<div class="field">
-				<label class="label" for="name">Type of Property</label>
-				<div class="control">
-					<input class="input " type="text" placeholder="" id="name" />
+				<div class="field">
+					<label class="label" for="bedrooms">Number of Bedrooms</label>
+					<div class="control">
+						<input
+							class="input "
+							type="number"
+							placeholder=""
+							id="bedrooms"
+							required
+							name="bedrooms"
+						/>
+					</div>
 				</div>
-			</div>
 
-			<div class="control">
-				<button class="button is-link">Submit</button>
-			</div>
+				<div class="field">
+					<label class="label" for="type">Type of Property</label>
+					<div class="control">
+						<input class="input " type="text" placeholder="" id="type" required name="type" />
+					</div>
+				</div>
+
+				<div class="field">
+					<label class="label" for="message">Message</label>
+					<div class="control">
+						<textarea
+							class="textarea"
+							placeholder=""
+							rows="3"
+							id="message"
+							required
+							name="message"
+						/>
+					</div>
+				</div>
+
+				<input
+					type="hidden"
+					value={$favorites.favorites.map((f) => f.ref).join(',')}
+					name="references"
+				/>
+
+				<div class="control">
+					<button type="submit" class="button is-link" on:click={submit_form}>Submit</button>
+					<a class="button" href={''} target="_self">Reset</a>
+				</div>
+			</form>
 		</div>
 	</div>
 </section>
@@ -190,14 +270,16 @@
 	}
 
 	.evaluation_wrapper {
-		display: flex;
-		/* flex-wrap: wrap; */
+		/* display: flex;
+		flex-wrap: wrap;
 		justify-content: center;
+		gap: 5rem; */
 		gap: 5rem;
 	}
 
 	.evaluation_form {
-		width: 50%;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.evaluation_form input {
@@ -205,7 +287,6 @@
 	}
 
 	.evaluation_text {
-		width: 50%;
 		display: flex;
 		align-items: center;
 		flex-direction: column;
@@ -221,5 +302,67 @@
 		text-align: center;
 		display: block;
 		background-size: cover;
+	}
+
+	.autocomplete_container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	:global(.input-container) {
+		position: relative;
+		border-color: #dbdbdb !important;
+	}
+
+	:global(.autocomplete input) {
+		font-size: 0.875rem;
+		font-weight: 400;
+		line-height: 1.28572;
+		letter-spacing: 0.16px;
+		outline: 2px solid rgba(0, 0, 0, 0);
+		outline-offset: -2px;
+		display: block;
+		width: 100%;
+		height: 2.5rem;
+		padding: 0 3rem 0 1rem;
+		border: none;
+		border-bottom: 1px solid #8d8d8d;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		background-color: #f4f4f4;
+		border-radius: 0;
+		color: #161616;
+		cursor: pointer;
+		font-family: inherit;
+		opacity: 1;
+		transition: outline 70ms cubic-bezier(0.2, 0, 0.38, 0.9);
+		height: 2.4em !important;
+
+		background-color: white !important;
+		border-color: #dbdbdb !important;
+		border-radius: 4px !important;
+		color: #363636 !important;
+	}
+
+	:global(.autocomplete::after) {
+		border-color: #485fc7 !important;
+		right: 1.125em;
+		z-index: 4;
+
+		border: 3px solid transparent;
+		border-radius: 2px;
+		border-right: 0;
+		border-top: 0;
+		content: ' ';
+		display: block;
+		height: 0.625em;
+		margin-top: -0.25em !important;
+		pointer-events: none;
+		position: absolute;
+		top: 50%;
+		transform: rotate(-45deg);
+		transform-origin: center;
+		width: 0.625em;
 	}
 </style>
