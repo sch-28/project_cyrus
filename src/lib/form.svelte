@@ -76,6 +76,7 @@
 			name="references"
 			on:click={submit_form}>Submit</button
 		>
+		<a class="button" href={''} target="_self">Reset</a>
 	</div>
 </form>
 
