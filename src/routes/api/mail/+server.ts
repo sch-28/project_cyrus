@@ -1,6 +1,6 @@
 import type { RequestHandler } from './$types';
 import nodemailer from 'nodemailer';
-import { CAPTCHA_SECRET_KEY, MAIL_PASS, MAIL_USER } from '$env/static/private';
+import { CAPTCHA_SECRET_KEY, EMAIL_RECEIVER, MAIL_PASS, MAIL_USER } from '$env/static/private';
 
 const transporter = nodemailer.createTransport({
 	host: 'smtp.ionos.de',
@@ -10,14 +10,13 @@ const transporter = nodemailer.createTransport({
 	auth: {
 		user: MAIL_USER,
 		pass: MAIL_PASS
-	},
-	logger: true
+	}
 });
 
 async function send_mail(content: string[]) {
 	await transporter.sendMail({
 		from: 'mailserver@varzi-realty.com', // sender address
-		to: 'jansch2803@googlemail.com',
+		to: EMAIL_RECEIVER,
 		subject: 'Website Contact', // Subject line
 		text: content.join('\n'), // plain text body
 		html: '' // html body
@@ -36,7 +35,6 @@ async function verify_token(token: string) {
 	const response = await result.json();
 
 	if (response && response.success == true && response.score >= 0.2) {
-		console.log(response);
 		return true;
 	}
 
@@ -53,10 +51,8 @@ export const POST: RequestHandler = async (event) => {
 		content[pair[0]] = pair[1];
 	}
 	const result = await verify_token(content['token']);
-	console.log(content, result);
 
 	if (result) {
-		console.log(mail_content);
 		await send_mail(mail_content);
 	}
 
