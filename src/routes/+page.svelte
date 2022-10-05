@@ -2,11 +2,35 @@
 	import header_image from '$lib/assets/headerImage.jfif';
 	import report_svg from '$lib/assets/report.svg';
 	import { locations } from './properties/locations';
+	import { favorites } from '$lib/store';
 	import AutoComplete from 'simple-svelte-autocomplete';
+	import { CAPTCHA_SITE_KEY } from '$env/static/private';
 	let selected_type: string = '0';
 	let selected_price: string = '500.000';
 	let selected_locations: string[] = [];
 	let selected_purchase_type: string = '1';
+
+	let form: HTMLFormElement;
+	let token_input: HTMLInputElement;
+
+	async function submit_form(e: Event) {
+		e.preventDefault();
+
+		if (!form.checkValidity()) {
+			form.reportValidity();
+			return;
+		}
+
+		await new Promise((resolve, reject) => {
+			// grecaptcha.ready needs a callback so we create a promise to await
+			grecaptcha.ready(resolve);
+		});
+		// grecaptcha.execute returns a promise so we can await it
+		grecaptcha.execute(CAPTCHA_SITE_KEY, { action: 'submit' }).then(function (new_token: string) {
+			token_input.value = new_token;
+			form.submit();
+		});
+	}
 </script>
 
 <svelte:head>
@@ -101,51 +125,60 @@
 			<img src={report_svg} alt="home evaluation report" class="report_svg" />
 		</div>
 		<div class="evaluation_form tile">
-			<div class="field">
-				<label class="label" for="name">Name</label>
-				<div class="control">
-					<input class="input " type="text" placeholder="" id="name" />
-				</div>
-			</div>
+			<form action="/api/mail" method="post" bind:this={form}>
+				<input type="hidden" name="token" bind:this={token_input} />
 
-			<div class="field">
-				<label class="label" for="email">Email</label>
-				<div class="control">
-					<input class="input " type="email" placeholder="" id="email" />
+				<div class="field">
+					<label class="label" for="name">Name</label>
+					<div class="control">
+						<input class="input " type="text" placeholder="" id="name" required name="name"/>
+					</div>
 				</div>
-			</div>
 
-			<div class="field">
-				<label class="label" for="address">Property Address</label>
-				<div class="control">
-					<input class="input " type="text" placeholder="" id="address" />
+				<div class="field">
+					<label class="label" for="email">Email</label>
+					<div class="control">
+						<input class="input " type="email" placeholder="" id="email" required name="email" />
+					</div>
 				</div>
-			</div>
 
-			<div class="field">
-				<label class="label" for="bedrooms">Number of Bedrooms</label>
-				<div class="control">
-					<input class="input " type="number" placeholder="" id="bedrooms" />
+				<div class="field">
+					<label class="label" for="address">Property Address</label>
+					<div class="control">
+						<input class="input " type="text" placeholder="" id="address" required name="address"/>
+					</div>
 				</div>
-			</div>
 
-			<div class="field">
-				<label class="label" for="name">Type of Property</label>
-				<div class="control">
-					<input class="input " type="text" placeholder="" id="name" />
+				<div class="field">
+					<label class="label" for="bedrooms">Number of Bedrooms</label>
+					<div class="control">
+						<input class="input " type="number" placeholder="" id="bedrooms" required name="bedrooms"/>
+					</div>
 				</div>
-			</div>
 
-			<div class="field">
-				<label class="label" for="name">Message</label>
-				<div class="control">
-					<textarea class="textarea" placeholder="" rows="3" />
+				<div class="field">
+					<label class="label" for="type">Type of Property</label>
+					<div class="control">
+						<input class="input " type="text" placeholder="" id="type" required name="type"/>
+					</div>
 				</div>
-			</div>
 
-			<div class="control">
-				<button class="button is-link">Submit</button>
-			</div>
+				<div class="field">
+					<label class="label" for="message">Message</label>
+					<div class="control">
+						<textarea class="textarea" placeholder="" rows="3" id="message" required name="message"/>
+					</div>
+				</div>
+
+				<div class="control">
+					<button
+						class="button is-link"
+						value={$favorites.favorites.map((f) => f.ref).join(',')}
+						name="references"
+						on:click={submit_form}>Submit</button
+					>
+				</div>
+			</form>
 		</div>
 	</div>
 </section>

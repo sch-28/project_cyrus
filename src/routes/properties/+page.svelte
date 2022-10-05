@@ -1,6 +1,6 @@
 <script lang="ts">
 	import AutoComplete from 'simple-svelte-autocomplete';
-	import Property from '$lib/property/property.svelte';
+	import Property from '$lib/property.svelte';
 	import type { Property as Property_Type } from './search_api';
 	import Form from 'carbon-components-svelte/src/Form/Form.svelte';
 	import FormGroup from 'carbon-components-svelte/src/FormGroup/FormGroup.svelte';

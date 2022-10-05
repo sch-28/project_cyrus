@@ -5,6 +5,7 @@
 	import booking_image from '$lib/assets/booking.png';
 
 	import whatsapp_logo from '$lib/assets/whatsapp.png';
+	import Form from '$lib/form.svelte';
 </script>
 
 <svelte:head>
@@ -55,32 +56,7 @@
 	</a>
 </div>
 
-<div class="contact_form">
-	<div class="field">
-		<label class="label" for="name">Name</label>
-		<div class="control">
-			<input class="input " type="text" placeholder="" id="name" />
-		</div>
-	</div>
-
-	<div class="field">
-		<label class="label" for="email">Email</label>
-		<div class="control">
-			<input class="input " type="email" placeholder="" id="email" />
-		</div>
-	</div>
-
-	<div class="field">
-		<label class="label" for="message">Message</label>
-		<div class="control">
-			<textarea class="textarea" placeholder="" id="message"/>
-		</div>
-	</div>
-
-	<div class="control" style="margin-left:auto;">
-		<button class="button is-link" style="margin-left:auto;">Submit</button>
-	</div>
-</div>
+<Form />
 
 <style>
 	h1,
@@ -143,9 +119,8 @@
 	}
 	.whatsapp_logo {
 		width: 50px;
-
 	}
-	.whatsapp{
+	.whatsapp {
 		margin: 0 auto;
 		display: block;
 	}

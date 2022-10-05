@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { favorites } from '$lib/store';
+	import Form from '$lib/form.svelte';
+import { favorites } from '$lib/store';
 	import { number_to_euro } from '$lib/util';
 
 	function remove_favorite(ref: string) {
@@ -7,6 +8,7 @@
 			return { favorites: v.favorites.filter((v) => v.ref != ref) };
 		});
 	}
+	
 </script>
 
 <h1>Favorites</h1>
@@ -56,44 +58,7 @@
 	<br />
 	<h1>Contact</h1>
 	<div class="contact_form">
-		<div class="field">
-			<label class="label" for="name">Name</label>
-			<div class="control">
-				<input class="input " type="text" placeholder="" id="name" />
-			</div>
-		</div>
-
-		<div class="field">
-			<label class="label" for="email">Email</label>
-			<div class="control">
-				<input class="input " type="email" placeholder="" id="email" />
-			</div>
-		</div>
-
-		<div class="field">
-			<label class="label" for="properties">Properties</label>
-			<div class="control">
-				<div class="refs input" id="properties">
-					{#each $favorites.favorites as fav}
-						<div class="tags has-addons">
-							<span class="tag">{fav.ref}</span>
-							<span class="tag is-delete" on:click={() => remove_favorite(fav.ref)} />
-						</div>
-					{/each}
-				</div>
-			</div>
-		</div>
-
-		<div class="field">
-			<label class="label" for="message">Message</label>
-			<div class="control">
-				<textarea class="textarea" placeholder="" id="message" />
-			</div>
-		</div>
-
-		<div class="control" style="margin-left:auto;">
-			<button class="button is-link" style="margin-left:auto;">Submit</button>
-		</div>
+	<Form></Form>	
 	</div>
 </div>
 
@@ -129,15 +94,5 @@
 		color: black;
 	}
 
-	.refs {
-		display: flex;
-		gap: 5px;
-
-		flex-wrap: wrap;
-		height: fit-content;
-	}
-	.refs .tags,
-	.refs .tag {
-		margin-bottom: 0;
-	}
+	
 </style>

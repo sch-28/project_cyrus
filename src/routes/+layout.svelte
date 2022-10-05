@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Header from '$lib/header/Header.svelte';
-	import Footer from '$lib/footer/Footer.svelte';
+	import Header from '$lib/Header.svelte';
+	import Footer from '$lib/Footer.svelte';
 	import '../app.css';
 	import 'carbon-components-svelte/css/white.css';
 	import 'bulma/css/bulma.css';
