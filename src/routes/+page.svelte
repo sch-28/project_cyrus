@@ -183,14 +183,7 @@
 	</div>
 </section>
 
-<section class="description">
-	<div class="text_content">
-		<h1>Placeholder Title</h1>
-		<h3>Placeholder Subtitle</h3>
-		<br />
-		<span>Placeholder Text</span>
-	</div>
-</section>
+
 
 <style>
 	.quick_search {
