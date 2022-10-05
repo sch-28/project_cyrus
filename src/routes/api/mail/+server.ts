@@ -55,5 +55,5 @@ export const POST: RequestHandler = async (event) => {
 		await send_mail(mail_content);
 	}
 
-	return new Response(null, { status: 302, headers: { Location: '/' } });
+	return new Response(null, { status: 302, headers: { Location: '/thank-you' } });
 };
