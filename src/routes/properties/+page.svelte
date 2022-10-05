@@ -213,11 +213,6 @@
 </div>
 
 <style>
-	.control {
-		display: flex;
-		gap: 5px;
-		align-items: center;
-	}
 	.field,
 	select,
 	.select {
