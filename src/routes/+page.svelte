@@ -6,7 +6,7 @@
 	import AutoComplete from 'simple-svelte-autocomplete';
 	import { CAPTCHA_SITE_KEY } from '$env/static/private';
 	let selected_type: string = '0';
-	let selected_price: string = '500.000';
+	let selected_price: string = '';
 	let selected_locations: string[] = [];
 	let selected_purchase_type: string = '1';
 
@@ -131,7 +131,7 @@
 				<div class="field">
 					<label class="label" for="name">Name</label>
 					<div class="control">
-						<input class="input " type="text" placeholder="" id="name" required name="name"/>
+						<input class="input " type="text" placeholder="" id="name" required name="name" />
 					</div>
 				</div>
 
@@ -145,28 +145,42 @@
 				<div class="field">
 					<label class="label" for="address">Property Address</label>
 					<div class="control">
-						<input class="input " type="text" placeholder="" id="address" required name="address"/>
+						<input class="input " type="text" placeholder="" id="address" required name="address" />
 					</div>
 				</div>
 
 				<div class="field">
 					<label class="label" for="bedrooms">Number of Bedrooms</label>
 					<div class="control">
-						<input class="input " type="number" placeholder="" id="bedrooms" required name="bedrooms"/>
+						<input
+							class="input "
+							type="number"
+							placeholder=""
+							id="bedrooms"
+							required
+							name="bedrooms"
+						/>
 					</div>
 				</div>
 
 				<div class="field">
 					<label class="label" for="type">Type of Property</label>
 					<div class="control">
-						<input class="input " type="text" placeholder="" id="type" required name="type"/>
+						<input class="input " type="text" placeholder="" id="type" required name="type" />
 					</div>
 				</div>
 
 				<div class="field">
 					<label class="label" for="message">Message</label>
 					<div class="control">
-						<textarea class="textarea" placeholder="" rows="3" id="message" required name="message"/>
+						<textarea
+							class="textarea"
+							placeholder=""
+							rows="3"
+							id="message"
+							required
+							name="message"
+						/>
 					</div>
 				</div>
 
@@ -182,8 +196,6 @@
 		</div>
 	</div>
 </section>
-
-
 
 <style>
 	.quick_search {
