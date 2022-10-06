@@ -55,5 +55,7 @@ export const POST: RequestHandler = async (event) => {
 		await send_mail(mail_content);
 	}
 
+	console.info(`Contact request recieved.\n${mail_content}.\n Email sent: ${result}`);
+
 	return new Response(null, { status: 302, headers: { Location: '/thank-you' } });
 };
