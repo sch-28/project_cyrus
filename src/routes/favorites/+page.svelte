@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Form from '$lib/form.svelte';
+	import Property from '$lib/property.svelte';
 	import { favorites } from '$lib/store';
 	import { number_to_euro } from '$lib/util';
 
@@ -13,16 +14,21 @@
 <h1>Favorites</h1>
 <div class="properties">
 	{#each $favorites.favorites as fav}
-		{#if fav.results.Property}
+		{#if fav.property}
 			<nav class="level property">
 				<!-- Left side -->
 
 				<a class="level-left" sveltekit:prefetch href="/property/{fav.filter}/{fav.ref}">
 					<div class="level-item">
 						<div class="property_image">
-							{#if fav.results.Property?.Pictures.Count > 0}
+							{#if fav.property.Pictures && fav.property.Pictures.Count > 0}
 								<img
-									src={fav.results.Property.Pictures.Picture[0].PictureURL}
+									src={fav.property.Pictures.Picture[0].PictureURL}
+									alt="property thumbnail"
+								/>
+							{:else if fav.property.MainImage}
+							<img
+									src={fav.property.MainImage}
 									alt="property thumbnail"
 								/>
 							{/if}
@@ -34,12 +40,12 @@
 								<strong>{fav.ref}</strong>
 							</div>
 							<div class="stats">
-								{#if fav.results.Property.Price}
-									{number_to_euro(+fav.results.Property.Price)}
+								{#if fav.property.Price}
+									{number_to_euro(+fav.property.Price)}
 								{:else}
-									Short Term: {number_to_euro(fav.results.Property.RentalPrice1)} / Week
+									Short Term: {number_to_euro(fav.property.RentalPrice1)} / Week
 									<br />
-									Long Term: {number_to_euro(fav.results.Property.RentalPrice2)} / Month
+									Long Term: {number_to_euro(fav.property.RentalPrice2)} / Month
 								{/if}
 							</div>
 						</div>

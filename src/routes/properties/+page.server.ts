@@ -47,5 +47,5 @@ export const load: PageServerLoad = async (load_event) => {
 
 	const results = await Promise.all(promises);
 
-	return { params: search_query, results: results };
+	return { params: search_query, results: results, filter: search_query.purchase_type };
 };

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import AutoComplete from 'simple-svelte-autocomplete';
 	import Property from '$lib/property.svelte';
-	import type { Property as Property_Type } from './search_api';
 	import Form from 'carbon-components-svelte/src/Form/Form.svelte';
 	import FormGroup from 'carbon-components-svelte/src/FormGroup/FormGroup.svelte';
 	import RadioButtonGroup from 'carbon-components-svelte/src/RadioButtonGroup/RadioButtonGroup.svelte';
@@ -53,10 +52,6 @@
 	function submit_form() {
 		const form = document.getElementById('form') as HTMLFormElement | null;
 		form?.submit();
-	}
-
-	function show_property(property: Property_Type) {
-		goto(`/property/${params.purchase_type}/${property.Reference}`);
 	}
 </script>
 
@@ -195,9 +190,7 @@
 		<!-- PROPERTIES IF FOUND -->
 		<div class="properties">
 			{#each search_results.Property as property}
-				<div class="clickable" on:click={() => show_property(property)}>
-					<Property {property} />
-				</div>
+				<Property {property} filter={data.filter} />
 			{/each}
 		</div>
 		<PaginationNav

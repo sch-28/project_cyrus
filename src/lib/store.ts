@@ -1,6 +1,6 @@
 // from https://stackoverflow.com/a/68785061
 import { browser } from '$app/env';
-import type { Detail_Response } from 'src/routes/property/[filter]/[ref]/detail_api';
+import type { Property_Detail } from 'src/routes/property/[filter]/[ref]/detail_api';
 import type { Writable } from 'svelte/store';
 import { writable, get } from 'svelte/store';
 
@@ -33,7 +33,7 @@ const storage = <T>(key: string, initValue: T): Writable<T> => {
 export default storage;
 
 export interface Favorites {
-	favorites: { ref: string; results: Detail_Response; filter: string }[];
+	favorites: { ref: string; property: Property_Detail; filter: string }[];
 }
 
 export const favorites = storage<Favorites>('favorites', { favorites: [] });

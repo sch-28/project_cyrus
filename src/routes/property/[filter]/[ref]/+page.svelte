@@ -2,8 +2,9 @@
 	import { number_to_euro } from '$lib/util';
 	import type { Detail_Response } from './detail_api';
 	import Favorite from 'carbon-icons-svelte/lib/Favorite.svelte';
-	import { favorites } from '$lib/store';
 	import FavoriteFilled from 'carbon-icons-svelte/lib/FavoriteFilled.svelte';
+	import { favorites } from '$lib/store';
+
 	export let data: { ref: string; results: Detail_Response; filter: string };
 
 	let selected_image = 0;
@@ -41,7 +42,7 @@
 			});
 		} else {
 			favorites.update((v) => {
-				v.favorites.push(data);
+				v.favorites.push({ ref: data.ref, property: data.results.Property!, filter: data.filter });
 				return v;
 			});
 		}

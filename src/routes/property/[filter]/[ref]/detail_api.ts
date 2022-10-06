@@ -1,6 +1,7 @@
 import { request } from '../../../properties/api';
 
 export interface Property_Detail{
+	MainImage: any;
 	RentalPrice2: number;
 	RentalPrice1: number;
 

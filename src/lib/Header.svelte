@@ -18,7 +18,7 @@
 
 		<a
 			data-sveltekit-prefetch
-			href="{'javascript:;'}"
+			href={'javascript:;'}
 			class:is-active={expand_menu}
 			on:click={() => (expand_menu = !expand_menu)}
 			role="button"
@@ -56,7 +56,8 @@
 				</div>
 			</div>
 
-			<a class="navbar-item" sveltekit:prefetch href="/favorites">
+			<a class="navbar-item favorites" sveltekit:prefetch href="/favorites">
+				<span>Favorites</span>
 				<Favorite size={20} />
 			</a>
 		</div>
@@ -71,5 +72,10 @@
 	.navbar {
 		max-width: 1024px;
 		margin: 0 auto;
+	}
+
+	.favorites {
+		display: flex;
+		gap: 5px;
 	}
 </style>
