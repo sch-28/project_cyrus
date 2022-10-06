@@ -23,6 +23,7 @@
 
 	import { page } from '$app/stores';
 	import { browser } from '$app/env';
+	import { CAPTCHA_SITE_KEY } from '$env/static/private';
 
 	page.subscribe(() => {
 		if (!browser) return;
@@ -39,6 +40,10 @@
 		}
 	});
 </script>
+
+<svelte:head>
+	<script src="https://www.google.com/recaptcha/api.js?render={CAPTCHA_SITE_KEY}"></script>
+</svelte:head>
 
 <Header />
 
