@@ -51,11 +51,12 @@ export const POST: RequestHandler = async (event) => {
 		content[pair[0]] = pair[1];
 	}
 	const result = await verify_token(content['token']);
-	if (result) {
-		await send_mail(mail_content);
-	}
-
 	console.info(`Contact request recieved.\n${mail_content}.\n Email sent: ${result}`);
 
-	return new Response(null, { status: 302, headers: { Location: '/thank-you' } });
+	if (result) {
+		await send_mail(mail_content);
+		return new Response(null, { status: 302, headers: { Location: '/thank-you' } });
+	}
+
+	return new Response(null, { status: 302, headers: { Location: '/error' } });
 };
