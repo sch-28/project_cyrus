@@ -313,6 +313,11 @@
 		position: relative;
 		border-color: #dbdbdb !important;
 	}
+	@media screen and (max-width: 1023px) {
+		:global(.autocomplete-list) {
+			max-height: calc(6 * (1rem + 10px) + 15px) !important;
+		}
+	}
 
 	:global(.autocomplete input) {
 		font-size: 0.875rem;

@@ -205,6 +205,7 @@
 			total={Math.ceil(search_results.QueryInfo.PropertyCount / 9)}
 			on:change={(x) => change_page(x.detail.page)}
 			page={params.page - 1}
+			shown={5}
 		/>
 	{:else if search_results}
 		<!-- ERROR MESSAGE INSTEAD OF PROPERTIES -->
@@ -273,6 +274,12 @@
 	:global(.input-container) {
 		position: relative;
 		border-color: #dbdbdb !important;
+	}
+
+	@media screen and (max-width: 1023px) {
+		:global(.autocomplete-list) {
+			max-height: calc(6 * (1rem + 10px) + 15px) !important;
+		}
 	}
 
 	:global(.autocomplete input) {
