@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import logo from '$lib/assets/Logo_white.png';
-	import whatsapp_logo from '$lib/assets/whatsapp.png';
 	import Favorite from 'carbon-icons-svelte/lib/Favorite.svelte';
+	import whatsapp_logo from '$lib/assets/whatsapp.png';
 
 	$: is_url = (url: string) => {
 		return $page.url.pathname === url;
@@ -36,26 +36,15 @@
 		<div class="navbar-start" />
 
 		<div class="navbar-end">
-			<a class="navbar-item" sveltekit:prefetch href="/properties">Properties</a>
-			<a class="navbar-item" sveltekit:prefetch href="/about">About us</a>
-
-			<div class="navbar-item has-dropdown is-hoverable">
-				<a class="navbar-link" href={'javascript:;'}> More </a>
-
-				<div class="navbar-dropdown">
-					<a class="navbar-item" sveltekit:prefetch href="/propertymanagement"
-						>Property Management</a
-					>
-
-					<a class="navbar-item" sveltekit:prefetch href="https://varzirealty.staydirectly.com/"
-						>Short-Term Rentals</a
-					>
-					<a class="navbar-item" sveltekit:prefetch href="/guide">FAQs</a>
-					<!-- <hr class="navbar-divider" />
-					<div class="navbar-item" /> -->
-				</div>
-			</div>
-
+			<a class="navbar-item" sveltekit:prefetch href="/properties">All Properties</a>
+			<a class="navbar-item" sveltekit:prefetch href="https://varzirealty.staydirectly.com/">Exclusive rentals</a>
+			<a class="navbar-item" sveltekit:prefetch href="/propertymanagement">Property Management</a>
+			<a class="navbar-item" sveltekit:prefetch href="/investmentanalysis">Investment Analysis</a>
+			<a class="navbar-item" sveltekit:prefetch href="/guide">Guides</a>
+			<a class="navbar-item" sveltekit:prefetch href="/about">About</a>
+			<a class="navbar-item" sveltekit:prefetch href="https://wa.me/34689105197">
+				<img src={whatsapp_logo} width="30" alt="whatsapp" />
+			</a>
 			<a class="navbar-item favorites" sveltekit:prefetch href="/favorites">
 				<span>Favorites</span>
 				<Favorite size={20} />

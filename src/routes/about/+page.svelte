@@ -3,7 +3,6 @@
 	import superhost_image from '$lib/assets/superhost.png';
 	import airbng_image from '$lib/assets/airbnb.png';
 	import booking_image from '$lib/assets/booking.png';
-
 	import whatsapp_logo from '$lib/assets/whatsapp.png';
 	import Form from '$lib/form.svelte';
 </script>
@@ -14,6 +13,7 @@
 </svelte:head>
 
 <img class="founder_image" src={founder_image} alt="Cyrus Varzi" />
+<!--
 <div class="awards">
 	<div class="award">
 		<img src={superhost_image} alt="Airbnb Superhost Logo" />
@@ -28,6 +28,7 @@
 		<span>9 Booking Reviews</span>
 	</div>
 </div>
+-->
 <h1>About us</h1>
 <h3>This is Cyrus from Marbella</h3>
 <br />
@@ -49,7 +50,7 @@
 	contact us either via the below form.
 </span>
 <div class="spacer" />
-<h1>Send us a message!</h1>
+<h1>Message us by using the form or the Whatsapp icon</h1>
 <div class="whatsapp">
 	<a sveltekit:prefetch href="https://wa.me/34689105197">
 		<img class="whatsapp_logo" src={whatsapp_logo} alt="whatsapp logo" />

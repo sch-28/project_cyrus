@@ -1,9 +1,9 @@
 <svelte:head>
-	<title>Property Management</title>
-	<meta name="description" content="Property Management" />
+	<title>Investment Analysis</title>
+	<meta name="description" content="Investment Analysis" />
 </svelte:head>
 
-Property Management TODO
+Investment Analysis TODO
 
 <section>
 	<div class="text_content">

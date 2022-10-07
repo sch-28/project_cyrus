@@ -30,6 +30,7 @@
 			token_input.value = new_token;
 			form.submit();
 		});
+
 	}
 </script>
 
@@ -45,9 +46,9 @@
 			<label class="label" for="purchase_type">Option</label>
 			<div class="select">
 				<select bind:value={selected_purchase_type} id="purchase_type">
-					<option value="1">Buy</option>
-					<option value="2">Short Term Rent</option>
-					<option value="3">Long Term Rent</option>
+					<option value="1">Purchase</option>
+					<option value="2">Rent - Short Term</option>
+					<option value="3">Rent - Long Term</option>
 				</select>
 			</div>
 		</div>
@@ -102,12 +103,11 @@
 
 <section class="description">
 	<div class="text_content">
-		<h1>Our Landlord Services</h1>
+		<h1>A complete real estate service</h1>
 		<h3>We have everything covered.</h3>
 		<br />
 		<span
-			>We manage all stages of your property’s vacation rental and ensure that your home is kept to
-			a high standard. Click on each of our services below to find out more!</span
+			>Whether you want to buy, sell, rent, invest, or have your property managed and maintained, we provide a service for every need.</span
 		>
 	</div>
 </section>
@@ -143,7 +143,7 @@
 				</div>
 
 				<div class="field">
-					<label class="label" for="address">Property Address</label>
+					<label class="label" for="address">Property Address or Location</label>
 					<div class="control">
 						<input class="input " type="text" placeholder="" id="address" required name="address" />
 					</div>
