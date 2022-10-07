@@ -150,6 +150,7 @@
 					showClear
 					multiple
 				/>
+				<input type="hidden" name="locations" value={selected_locations.join(',')} />
 			</div>
 		{/if}
 	</FormGroup>
@@ -159,12 +160,7 @@
 		<!-- Left side -->
 		<div class="level-left">
 			<div class="level-item">
-				<button
-					class="button is-link "
-					name="locations"
-					type="submit"
-					value={selected_locations.join(',')}>Search</button
-				>
+				<button class="button is-link " type="submit">Search</button>
 			</div>
 			<div class="level-item">
 				<a sveltekit:prefetch href="/properties" target="_self">Reset</a>
