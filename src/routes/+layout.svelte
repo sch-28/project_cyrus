@@ -33,12 +33,16 @@
 		) as HTMLInputElement[];
 
 		for (let input_ref of input_refs) {
-			setTimeout(() => format_input(input_ref), 0);
+			init_input(input_ref);
 			input_ref.oninput = (event) => {
 				format_input(input_ref);
 			};
 		}
 	});
+
+	function init_input(input_ref: HTMLInputElement) {
+		setTimeout(() => format_input(input_ref), 0);
+	}
 </script>
 
 <svelte:head>
