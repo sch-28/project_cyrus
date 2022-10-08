@@ -220,9 +220,7 @@
 		width: 100%;
 		position: relative;
 	}
-	.clickable {
-		cursor: pointer;
-	}
+	
 	:global(.pagination) {
 		display: flex;
 		justify-content: center;
