@@ -1,8 +1,5 @@
 <script lang="ts">
 	import founder_image from '$lib/assets/founder.jpg';
-	import superhost_image from '$lib/assets/superhost.png';
-	import airbng_image from '$lib/assets/airbnb.png';
-	import booking_image from '$lib/assets/booking.png';
 	import whatsapp_logo from '$lib/assets/whatsapp.png';
 	import Form from '$lib/form.svelte';
 </script>
