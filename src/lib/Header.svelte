@@ -37,7 +37,6 @@
 
 		<div class="navbar-end">
 			<a class="navbar-item" sveltekit:prefetch href="/properties">Properties for Sale & Rent</a>
-		<!--	 <a class="navbar-item" sveltekit:prefetch href="https://varzirealty.staydirectly.com/">Exclusive rentals</a> 	-->
 			<a class="navbar-item" sveltekit:prefetch href="/propertymanagement">Property Management</a>
 			<a class="navbar-item" sveltekit:prefetch href="/investmentanalysis">Investment Analysis</a>
 			<a class="navbar-item" sveltekit:prefetch href="/guide">Guides</a>
