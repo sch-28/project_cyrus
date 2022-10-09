@@ -24,11 +24,13 @@ he identified a clear need for an integrated real estate agency that goes beyond
 the transactional journey.
 </span>
 <div class="spacer" />
-<h1>Send a message via the form below or Whatsapp</h1>
+<div class="container">
+<h1>Send a message via the form below or via </h1> &nbsp; &nbsp;
 <div class="whatsapp">
 	<a sveltekit:prefetch href="https://wa.me/34689105197">
 		<img class="whatsapp_logo" src={whatsapp_logo} alt="whatsapp logo" />
 	</a>
+</div>
 </div>
 
 <Form />
@@ -52,6 +54,10 @@ the transactional journey.
 	.spacer {
 		margin-top: 100px;
 	}
+	.container {
+  display: flex;
+ 
+}
 	span {
 		font-size: 1.25rem;
 		line-height: 2rem;
