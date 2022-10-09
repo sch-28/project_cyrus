@@ -104,7 +104,7 @@
 <section class="description">
 	<div class="text_content">
 		<h1>A fully integrated <br />real estate service</h1>
-		<h3>We have everything covered</h3>
+		<h3>Whatever you need</h3>
 		<br />
 		<span
 			>We can help you to buy, sell, rent, invest, or have your property managed and maintained</span
