@@ -103,11 +103,11 @@
 
 <section class="description">
 	<div class="text_content">
-		<h1>A complete real estate service</h1>
-		<h3>We have everything covered.</h3>
+		<h1>A fully integrated <br />real estate service</h1>
+		<h3>We have everything covered</h3>
 		<br />
 		<span
-			>Whether you want to buy, sell, rent, invest, or have your property managed and maintained, we provide a service for every need.</span
+			>We can help you to buy, sell, rent, invest, or have your property managed and maintained</span
 		>
 	</div>
 </section>
@@ -115,12 +115,11 @@
 <section class="evaluation">
 	<div class="evaluation_wrapper tile is-ancestor">
 		<div class="evaluation_text tile">
-			<h1>Your Property Has Potential</h1>
-			<h3>Find out how much you could be making.</h3>
+			<h1>What are you looking to buy, sell or rent?</h1>
+			<h3>More input enables us to advise you better</h3>
 			<br />
 			<span
-				>Fill out this quick and easy form to get a better idea of just how much your property could
-				be generating for you every month of the year!</span
+				>Fill in the form, letting us know which of our services you require</span
 			>
 			<img src={report_svg} alt="home evaluation report" class="report_svg" />
 		</div>

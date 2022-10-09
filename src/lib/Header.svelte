@@ -13,7 +13,7 @@
 <nav class="navbar " aria-label="main navigation">
 	<div class="navbar-brand">
 		<a class="navbar-item" sveltekit:prefetch href="/">
-			<img src="Logo_white.png" width="100" alt="logo" />
+			<img src="Logo_white.png" width="200" alt="logo" />
 		</a>
 
 		<a
@@ -36,8 +36,8 @@
 		<div class="navbar-start" />
 
 		<div class="navbar-end">
-			<a class="navbar-item" sveltekit:prefetch href="/properties">All Properties</a>
-			<a class="navbar-item" sveltekit:prefetch href="https://varzirealty.staydirectly.com/">Exclusive rentals</a>
+			<a class="navbar-item" sveltekit:prefetch href="/properties">Properties for Sale & Rent</a>
+		<!--	 <a class="navbar-item" sveltekit:prefetch href="https://varzirealty.staydirectly.com/">Exclusive rentals</a> 	-->
 			<a class="navbar-item" sveltekit:prefetch href="/propertymanagement">Property Management</a>
 			<a class="navbar-item" sveltekit:prefetch href="/investmentanalysis">Investment Analysis</a>
 			<a class="navbar-item" sveltekit:prefetch href="/guide">Guides</a>

@@ -33,24 +33,16 @@
 <h3>This is Cyrus from Marbella</h3>
 <br />
 <span>
-	Varzi Realty is a Marbella-based real estate company, founded by Cyrus Varzi, focused on three key
-	areas:
+Cyrus is an IESE MBA Graduate of Class of 2017, with a background in real estate, project management, consulting and commercial management, having worked for multinational companies across the globe.
 </span>
-<br />
-<ol>
-	<li>Managing owners’ properties for short-term rentals</li>
-	<li>
-		Guiding potential buyers through the entire process of selecting & buying properties in Marbella
-	</li>
-	<li>Investing in properties under its own umbrella to refurbish and rent out</li>
-</ol>
 <br />
 <span>
-	If you have any questions or are interested in any of our services please do not hesitate to
-	contact us either via the below form.
+Cyrus founded Varzi Realty in order to invest & manage sales / rentals of his own properties. After having experienced first hand the real estate market in Marbella, 
+he identified a clear need for an integrated real estate agency that goes beyond merely brokering deals between buyers and sellers; to guide and advise clients throughout 
+the transactional journey.
 </span>
 <div class="spacer" />
-<h1>Message us by using the form or the Whatsapp icon</h1>
+<h1>Send a message via the form below or Whatsapp</h1>
 <div class="whatsapp">
 	<a sveltekit:prefetch href="https://wa.me/34689105197">
 		<img class="whatsapp_logo" src={whatsapp_logo} alt="whatsapp logo" />
@@ -78,23 +70,6 @@
 	.spacer {
 		margin-top: 100px;
 	}
-	.awards {
-		display: flex;
-		justify-content: center;
-		margin-bottom: 35px;
-		margin-top: 35px;
-		gap: 10px;
-	}
-	.award {
-		display: flex;
-		gap: 5px;
-		max-width: 150px;
-		font-weight: 200;
-		align-items: center;
-	}
-	.award span {
-		line-height: 1.5rem;
-	}
 	span {
 		font-size: 1.25rem;
 		line-height: 2rem;
@@ -108,15 +83,6 @@
 		object-position: top;
 		margin-left: auto;
 		margin-right: auto;
-	}
-	ol {
-		list-style: decimal;
-	}
-
-	li {
-		font-size: 1.25rem;
-		line-height: 2rem;
-		margin-left: 1em;
 	}
 	.whatsapp_logo {
 		width: 50px;
