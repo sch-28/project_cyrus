@@ -268,6 +268,12 @@
 		text-align: center;
 	}
 
+	@media screen and (max-width: 1023px) {
+		.text_content {
+			padding: 0 5%;
+		}
+	}
+
 	.evaluation_wrapper {
 		/* display: flex;
 		flex-wrap: wrap;
