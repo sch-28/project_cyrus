@@ -10,22 +10,7 @@
 </svelte:head>
 
 <img class="founder_image" src={founder_image} alt="Cyrus Varzi" />
-<!--
-<div class="awards">
-	<div class="award">
-		<img src={superhost_image} alt="Airbnb Superhost Logo" />
-		<span>Airbnb Superhost</span>
-	</div>
-	<div class="award">
-		<img src={airbng_image} alt="Airbnb Logo" />
-		<span>22 Airbnb Reviews</span>
-	</div>
-	<div class="award">
-		<img src={booking_image} alt="Booking Logo" />
-		<span>9 Booking Reviews</span>
-	</div>
-</div>
--->
+
 <h1>About us</h1>
 <h3>This is Cyrus from Marbella</h3>
 <br />
