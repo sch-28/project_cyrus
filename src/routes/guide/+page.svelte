@@ -3,8 +3,6 @@
 	<meta name="description" content="guide" />
 </svelte:head>
 
-Here you will find general information relevant to buying/selling/renting.
-
 <section>
 	<div class="text_content">
 		<h1>Placeholder Title</h1>

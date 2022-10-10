@@ -26,7 +26,10 @@
 				<li>Maintenance & repairs</li>
 				<li>24/7 phone availability for emergencies</li>
 			</ul>
+<div> <br />
+You can choose to hire us for all services, some, or even just one of the services. We adapt to you; contact us for an initial discussion.
 
+</div>
 </section>
 <section>
 	<div class="text_content2">
@@ -120,7 +123,6 @@ img {vertical-align: middle;}
 
 	</div>
 	</section>
-<div>Please contact us for details via...</div>
 
 
 <style>
