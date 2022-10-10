@@ -1,16 +1,16 @@
 <svelte:head>
-	<title>Property Management</title>
+	<title>Real Estate Investment Analysis</title>
 	<meta name="description" content="Property Management" />
 </svelte:head>
 
-Property Management TODO
 
 <section>
 	<div class="text_content">
-		<h1>Placeholder Title</h1>
-		<h3>Placeholder Subtitle</h3>
+		<h1>Real Estate Investment Analysis</h1>
+		<h3>How we help you make informed purchasing decisions</h3>
 		<br />
-		<span>Placeholder Text</span>
+		<span>We look to the future to build lasting relationships. The only sustainable way of doing so is to provide you, our client, with the properties that 
+			will maximise your Return on Investment (ROI). In return, we aim to be your number one contact for future purchases, sales, and rental management.</span>
 	</div>
 </section>
 

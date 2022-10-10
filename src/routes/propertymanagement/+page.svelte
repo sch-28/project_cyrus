@@ -1,34 +1,122 @@
 <svelte:head>
-	<title>Investment Analysis</title>
-	<meta name="description" content="Investment Analysis" />
+	<title>Property Management</title>
+	<meta name="description" content="Property Management" />
 </svelte:head>
-
-Investment Analysis TODO
 
 <section>
 	<div class="text_content">
-		<h1>Placeholder Title</h1>
-		<h3>Placeholder Subtitle</h3>
+		<h1>Property Management</h1>
+		<h3>Whether you have an existing property you want to generate income with, or you are looking to purchase a property to rent short- or long-term, we 
+			offer our full range of flexible services. 
+		</h3>
 		<br />
-		<span>Placeholder Text</span>
 	</div>
-</section>
+		<span>Our range of services include:</span>
+		<br/> <br/>	
+			<ul> 
+				<li>Property Management</li>
+				<li>Marketing Online & Offline (Housing platforms, rental sites, real estate agent exchanges)</li>
+				<li>Guest Management, check-ins & check-outs</li>
+				<li>Cleaning, including turnovers</li>
+				<li>Maintenance & repairs</li>
+				<li>24/7 phone availability for emergencies</li>
+			</ul>
 
-<section>
-	<div class="tile is-ancestor">
-		<div class="tile">
-			<div class="left">
-				<h1>Placeholder Title</h1>
-				<h3>Placeholder Subtitle</h3>
-				<br />
-				<span>Placeholder Text</span>
-			</div>
-		</div>
-		<div class="tile">
-			<div class="right">Image</div>
-		</div>
-	</div>
 </section>
+<section>
+	<div class="text_content2">
+		<h1>References & Reviews</h1>
+		<h3>Great guest interaction leads to great reviews, which in turn leads to repeat (and direct) bookings, which increase profits.</h3>
+	<span>These are some of the positive reviews which enabled Cyrus to become a Superhost on Airbnb in record time:</span>
+
+
+<style>
+* {box-sizing: border-box;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+</style>
+
+<body>
+
+	<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <img src="/src/lib/assets/Reviews1.jpg" alt="Reviews 1" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+  <img src="/src/lib/assets/Reviews2.jpg" alt="Reviews 2" style="width:100%">
+</div>
+
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+<script>
+	let slideIndex = 0;
+	showSlides();
+	
+	function showSlides() {
+	  let i;
+	  let slides = document.getElementsByClassName("mySlides");
+	  let dots = document.getElementsByClassName("dot");
+	  for (i = 0; i < slides.length; i++) {
+		slides[i].style.display = "none";  
+	  }
+	  slideIndex++;
+	  if (slideIndex > slides.length) {slideIndex = 1}    
+	  for (i = 0; i < dots.length; i++) {
+		dots[i].className = dots[i].className.replace(" active", "");
+	  }
+	  slides[slideIndex-1].style.display = "block";  
+	  dots[slideIndex-1].className += " active";
+	  setTimeout(showSlides, 7000); // Change image every 7 seconds
+	}
+	</script>
+
+</body>
+
+	</div>
+	</section>
+<div>Please contact us for details via...</div>
+
 
 <style>
 	h1 {
@@ -58,5 +146,17 @@ Investment Analysis TODO
 		align-items: center;
 		flex-direction: column;
 		text-align: center;
+			}
+
+	.text_content2 {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
 	}
+
+	ul li {
+	list-style-type: circle;
+    list-style-position: inside;
+}
 </style>

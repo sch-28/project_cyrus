@@ -66,7 +66,7 @@
 			/>
 		{/each}
 	</div>
-	<div class="image_carousel ">
+	<div class="image_carousel">
 		{#if data.results.Property.Pictures.Count > 0}
 			<img
 				src={data.results.Property.Pictures.Picture[selected_image].PictureURL}
