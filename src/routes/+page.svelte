@@ -316,6 +316,9 @@
 		:global(.autocomplete-list) {
 			max-height: calc(6 * (1rem + 10px) + 15px) !important;
 		}
+		.text_content {
+			padding: 0 5%;
+		}
 	}
 
 	:global(.autocomplete input) {
