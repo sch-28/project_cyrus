@@ -1,3 +1,8 @@
+<script lang="ts">
+	import reviews1 from '$lib/assets/Reviews1.jpg';
+	import reviews2 from '$lib/assets/Reviews2.jpg';
+</script>
+
 <svelte:head>
 	<title>Property Management</title>
 	<meta name="description" content="Property Management" />
@@ -75,11 +80,11 @@ img {vertical-align: middle;}
 	<div class="slideshow-container">
 
 <div class="mySlides fade">
-  <img src="/src/lib/assets/Reviews1.jpg" alt="Reviews 1" style="width:100%">
+	<img class="reviews1" src={reviews1} alt="Reviews 1" />
 </div>
 
 <div class="mySlides fade">
-  <img src="/src/lib/assets/Reviews2.jpg" alt="Reviews 2" style="width:100%">
+	<img class="reviews2" src={reviews2} alt="Reviews2" />
 </div>
 
 <br>
