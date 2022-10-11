@@ -1,6 +1,6 @@
 <svelte:head>
 	<title>Real Estate Investment Analysis</title>
-	<meta name="description" content="Property Management" />
+	<meta name="description" content="Real Estate Investment Analysis Overview" />
 </svelte:head>
 
 

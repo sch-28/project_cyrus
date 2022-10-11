@@ -1,6 +1,6 @@
 <svelte:head>
-	<title>Guides</title>
-	<meta name="description" content="guide" />
+	<title>To be added</title>
+	<meta name="description" content="to be added" />
 </svelte:head>
 
 <section>

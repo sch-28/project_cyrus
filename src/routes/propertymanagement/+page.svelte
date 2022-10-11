@@ -5,8 +5,8 @@
 	</script>
 
 <svelte:head>
-	<title>Property Management</title>
-	<meta name="description" content="Property Management" />
+	<title>Property Management Services</title>
+	<meta name="description" content="Property Management Services Overview" />
 </svelte:head>
 
 <section>

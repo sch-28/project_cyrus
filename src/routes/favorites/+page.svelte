@@ -11,6 +11,11 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Favorites</title>
+	<meta name="description" content="Favorite properties" />
+</svelte:head>
+
 <h1>Favorites</h1>
 <div class="properties">
 	{#each $favorites.favorites as fav}

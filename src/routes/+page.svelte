@@ -35,8 +35,8 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="TODO" />
+	<title>Varzi Realty - Marbella Real Estate</title>
+	<meta name="description" content="Marbella Real Estate and Property Management" />
 </svelte:head>
 
 <section class="landing">

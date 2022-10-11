@@ -5,8 +5,8 @@
 </script>
 
 <svelte:head>
-	<title>Contact</title>
-	<meta name="description" content="Contact ..." />
+	<title>About Varzi Realty</title>
+	<meta name="description" content="About the founder and the company" />
 </svelte:head>
 
 <img class="founder_image" src={founder_image} alt="Cyrus Varzi" />
