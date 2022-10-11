@@ -1,7 +1,8 @@
 <script lang="ts">
+	import propertymanagement from '$lib/assets/propertymanagement.jpg';
 	import reviews1 from '$lib/assets/Reviews1.jpg';
 	import reviews2 from '$lib/assets/Reviews2.jpg';
-</script>
+	</script>
 
 <svelte:head>
 	<title>Property Management</title>
@@ -16,16 +17,10 @@
 		</h3>
 		<br />
 	</div>
-		<span>Our range of services include:</span>
-		<br/> <br/>	
-			<ul> 
-				<li>Property Management</li>
-				<li>Marketing Online & Offline (Housing platforms, rental sites, real estate agent exchanges)</li>
-				<li>Guest Management, check-ins & check-outs</li>
-				<li>Cleaning, including turnovers</li>
-				<li>Maintenance & repairs</li>
-				<li>24/7 phone availability for emergencies</li>
-			</ul>
+	<div>
+		<img class="responsive" src={propertymanagement} alt="Property Management"/>
+	</div>
+
 <div> <br />
 You can choose to hire us for all services, some, or even just one of the services. We adapt to you; contact us for an initial discussion.
 
@@ -161,9 +156,8 @@ img {vertical-align: middle;}
 		flex-direction: column;
 		text-align: center;
 	}
-
-	ul li {
-	list-style-type: circle;
-    list-style-position: inside;
-}
+	.responsive {
+		width: 100%;
+ 		height: auto;
+	}
 </style>
