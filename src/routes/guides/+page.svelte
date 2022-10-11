@@ -15,12 +15,13 @@
 
 <section>
 	<div class="grid-container">
-		<div class="grid-item">Blog post 1</div>
-		<div class="grid-item">Blog post 2</div>
-		<div class="grid-item">Blog post 3</div>
-		<div class="grid-item">Blog post 4</div>
-		<div class="grid-item">Blog post 5</div>
-		<div class="grid-item">Blog post 6</div>
+		<div class="grid-item">Golden Visa Guide</div>
+		<div class="grid-item">Buyer Guide</div>
+		<div class="grid-item">Seller Guide</div>
+		<div class="grid-item">Vacation Rental Guide</div>
+		<div class="grid-item">Investment Guide</div>
+		<div class="grid-item">Tax considerations</div>
+
 	  </div>
 </section>
 
