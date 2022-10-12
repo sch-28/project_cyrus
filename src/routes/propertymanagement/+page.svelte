@@ -1,5 +1,5 @@
 <script lang="ts">
-	import propertymanagement from '$lib/assets/propertymanagement.jpg';
+	import propertymanagement from '$lib/assets/propertymanagement.png';
 	import reviews1 from '$lib/assets/Reviews1.jpg';
 	import reviews2 from '$lib/assets/Reviews2.jpg';
 	</script>
