@@ -39,7 +39,6 @@
 			<a class="navbar-item" sveltekit:prefetch href="/properties">Properties for Sale & Rent</a>
 			<a class="navbar-item" sveltekit:prefetch href="/propertymanagement">Property Management</a>
 			<a class="navbar-item" sveltekit:prefetch href="/investmentanalysis">Investment Analysis</a>
-			<a class="navbar-item" sveltekit:prefetch href="/guides">Guides</a>
 			<a class="navbar-item" sveltekit:prefetch href="/about">About</a>
 			<a class="navbar-item" sveltekit:prefetch href="https://wa.me/34689105197">
 				<img src={whatsapp_logo} width="30" alt="whatsapp" />
