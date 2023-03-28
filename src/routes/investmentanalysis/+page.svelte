@@ -1,16 +1,19 @@
 <svelte:head>
 	<title>Real Estate Investment Analysis</title>
-	<meta name="description" content="Real Estate Investment Analysis Overview" />
+	<meta name="description" content="Golden Visa and Real Estate Investment Analysis" />
 </svelte:head>
 
 
 <section>
 	<div class="text_content">
-		<h1>Real Estate Investment Analysis</h1>
+		&nbsp&nbsp&nbsp&nbsp
+		<h1>Golden Visa and Real Estate Investment Analysis</h1>
 		<h3>How we help you make informed purchasing decisions</h3>
 		<br />
-		<span>We look to the future to build lasting relationships. The only sustainable way of doing so is to provide you, our client, with the properties that 
-			will maximise your Return on Investment (ROI). In return, we aim to be your number one contact for future purchases, sales, and rental management.</span>
+		<span>We understand that buying in Marbella can be overwhelming. There are many laws & regulations that need to be considered, whether you are buying as an investment, for your Golden Visa, 
+			or as a secondary residence. Whatever the challenge, we will accompany you on this journey.
+
+		</span>
 	</div>
 </section>
 
@@ -23,9 +26,9 @@
 				<br />
 				<span>Traditional real estate agents often do not know how to best advise their clients on property purchases. Their goal is to sell a property they hold or share, 
 					and leave it up to the clients to narrow down the selection of properties without offering any advice beyond repeating quotes about monthly rent.
-					<br /> <br/> Our job is to narrow down the selection for you and conduct in-depth financial analysis of your top selections to help you pick the right property. 
-					<br/> <br />
-					<h5>Our goal is to grow together.</h5>
+					<br /> <br/> Our job is to narrow down the selection for you and conduct in-depth financial analysis of your top selections to help you pick the right property.
+					We can prepare it for your moving-in date or manage its rental for you in your absence.
+
 				</span>
 			</div>
 		</div>
