@@ -42,18 +42,7 @@
 <section class="landing">
 	<div class="header_image" style={`background-image: url(${header_image})`} />
 	<div class="quick_search">
-		<div class="field">
-			<label class="label" for="purchase_type">Option</label>
-			<div class="select">
-				<select bind:value={selected_purchase_type} id="purchase_type">
-					<option value="1">Purchase</option>
-					<option value="2">Rent - Short Term</option>
-					<option value="3">Rent - Long Term</option>
-				</select>
-			</div>
-		</div>
-
-		<div class="field">
+				<div class="field">
 			<label class="label" for="property_type">Types</label>
 			<div class="select">
 				<select name="property_type" id="property_type" bind:value={selected_type}>

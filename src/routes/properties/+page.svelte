@@ -60,19 +60,6 @@
 	<meta name="description" content="Search for specific properties" />
 </svelte:head>
 <Form on:submit method="GET" id="form">
-	<!-- PURCHASE RADIO BUTTONS -->
-	<FormGroup>
-		<RadioButtonGroup
-			name="purchase_type"
-			selected={params.purchase_type.toString()}
-			on:click={submit_form}
-		>
-			<RadioButton value="1" name="purchase_type" labelText="Buy" />
-			<RadioButton value="2" name="purchase_type" labelText="Short Term Rent" />
-			<RadioButton value="3" name="purchase_type" labelText="Long Term Rent" />
-			<RadioButton value="4" name="purchase_type" labelText="Featured" />
-		</RadioButtonGroup>
-	</FormGroup>
 
 	<FormGroup class="inline_select">
 		<div class="field">
@@ -86,11 +73,6 @@
 					<option value="4">Commerical</option>
 				</select>
 			</div>
-		</div>
-
-		<div class="field">
-			<label class="label" for="reference">Reference</label>
-			<input class="input " name="reference" id="reference" />
 		</div>
 	</FormGroup>
 
