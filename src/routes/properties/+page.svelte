@@ -60,7 +60,6 @@
 	<meta name="description" content="Search for specific properties" />
 </svelte:head>
 <Form on:submit method="GET" id="form">
-
 	<FormGroup class="inline_select">
 		<div class="field">
 			<label class="label" for="property_type">Types</label>
@@ -180,11 +179,20 @@
 		/>
 	{:else if search_results}
 		<!-- ERROR MESSAGE INSTEAD OF PROPERTIES -->
-		{search_results.transaction.errordescription}
+		<div class="error-list">
+			{typeof search_results.transaction.errordescription === 'string'
+				? search_results.transaction.errordescription
+				: Object.entries(search_results.transaction.errordescription)
+						.map(([key, value]) => `${key}: ${value}`)
+						.join('\n')}
+		</div>
 	{/if}
 </div>
 
 <style>
+	.error-list {
+		white-space: pre-line;
+	}
 	.field,
 	select,
 	.select {
@@ -202,7 +210,7 @@
 		width: 100%;
 		position: relative;
 	}
-	
+
 	:global(.pagination) {
 		display: flex;
 		justify-content: center;
