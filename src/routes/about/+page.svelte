@@ -11,17 +11,15 @@
 
 <img class="founder_image" src={founder_image} alt="Cyrus Varzi" />
 
-<h1>About us</h1>
+<h1>About Cyrus</h1>
 <h3>This is Cyrus from Marbella</h3>
 <br />
 <span>
-Cyrus is an IESE MBA Graduate of Class of 2017, with a background in real estate, project management, consulting and commercial management, having worked for multinational companies across the globe.
+Cyrus is an IESE (Barcelona) MBA Graduate of Class of 2017, with a background in real estate, project management and consulting,  having worked for multinational companies across the globe for several years.
 </span>
 <br />
 <span>
-Cyrus founded Varzi Realty in order to invest & manage sales / rentals of his own properties. After having experienced first hand the real estate market in Marbella, 
-he identified a clear need for an integrated real estate agency that goes beyond merely brokering deals between buyers and sellers; to guide and advise clients throughout 
-the transactional journey.
+Cyrus speaks English, Spanish, German and Farsi and has developed a strong knowledge of the real estate market in Marbella, as well as all aspects of the buying & selling process.
 </span>
 <div class="spacer" />
 <div class="container">

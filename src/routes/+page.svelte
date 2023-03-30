@@ -92,24 +92,22 @@
 
 <section class="description">
 	<div class="text_content">
-		<h1>A fully integrated <br />real estate service</h1>
-		<h3>Whatever you need</h3>
+		<h1>We find the right property for your golden visa </h1>
+		<h3>Our area of expertise is in properties between €500.000 and €3.000.000</h3>
 		<br />
 		<span
-			>We can help you to buy, sell, rent, invest, or have your property managed and maintained</span
-		>
+			>We are with you from selection to financing to purchasing and after-sales service.</span>
 	</div>
 </section>
 
 <section class="evaluation">
 	<div class="evaluation_wrapper tile is-ancestor">
 		<div class="evaluation_text tile">
-			<h1>What are you looking to buy, sell or rent?</h1>
-			<h3>More input enables us to advise you better</h3>
+			<h1>What are you looking to buy?</h1>
+			<h3>If you care about more than just rental yield, please let us know and we will send you a customised list of properties.</h3>
 			<br />
 			<span
-				>Fill in the form, letting us know which of our services you require</span
-			>
+			>We will help you select the right property for you, to live in and / or rent it out while you are abroad.</span>
 			<img src={report_svg} alt="home evaluation report" class="report_svg" />
 		</div>
 		<div class="evaluation_form tile">
@@ -117,21 +115,21 @@
 				<input type="hidden" name="token" bind:this={token_input} />
 
 				<div class="field">
-					<label class="label" for="name">Name</label>
+					<label class="label" for="name">Your Name</label>
 					<div class="control">
 						<input class="input " type="text" placeholder="" id="name" required name="name" />
 					</div>
 				</div>
 
 				<div class="field">
-					<label class="label" for="email">Email</label>
+					<label class="label" for="email">Your Email</label>
 					<div class="control">
 						<input class="input " type="email" placeholder="" id="email" required name="email" />
 					</div>
 				</div>
 
 				<div class="field">
-					<label class="label" for="address">Property Address or Location</label>
+					<label class="label" for="address">Property Location</label>
 					<div class="control">
 						<input class="input " type="text" placeholder="" id="address" required name="address" />
 					</div>
@@ -152,14 +150,14 @@
 				</div>
 
 				<div class="field">
-					<label class="label" for="type">Type of Property</label>
+					<label class="label" for="type">Type of Property (Apartment, Villa, Townhouse, etc.)</label>
 					<div class="control">
 						<input class="input " type="text" placeholder="" id="type" required name="type" />
 					</div>
 				</div>
 
 				<div class="field">
-					<label class="label" for="message">Message</label>
+					<label class="label" for="message">Any other details or requirements</label>
 					<div class="control">
 						<textarea
 							class="textarea"
