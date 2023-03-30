@@ -33,9 +33,7 @@
 	</div>
 
 	<div class="navbar-menu" class:is-active={expand_menu}>
-		<div class="navbar-start" />
-
-		<div class="navbar-end">
+		<div class="navbar-start">
 			<a class="navbar-item" sveltekit:prefetch href="/properties">Properties for Sale</a>
 			<a class="navbar-item" sveltekit:prefetch href="/goldenvisa">Golden Visa</a>
 			<a class="navbar-item" sveltekit:prefetch href="/about">About</a>
@@ -47,19 +45,19 @@
 				<Favorite size={20} />
 			</a>
 		</div>
+
+		<div class="navbar-end" />
 	</div>
 </nav>
 
 <style>
 	:global(.navbar-item img) {
 		max-height: unset !important;
-		
 	}
 
 	.navbar {
 		max-width: 1024px;
 		margin: 0 auto;
-
 	}
 
 	.favorites {
