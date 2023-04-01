@@ -7,7 +7,7 @@
 	import { CAPTCHA_SITE_KEY } from '$env/static/private';
 	let selected_type: string = '0';
 	let selected_price: string = '';
-	let selected_locations: string[] = [];
+	let selected_locations: string[] = ['Marbella'];
 	let selected_purchase_type: string = '1';
 
 	let form: HTMLFormElement;
@@ -30,7 +30,6 @@
 			token_input.value = new_token;
 			form.submit();
 		});
-
 	}
 </script>
 
@@ -42,7 +41,7 @@
 <section class="landing">
 	<div class="header_image" style={`background-image: url(${header_image})`} />
 	<div class="quick_search">
-				<div class="field">
+		<div class="field">
 			<label class="label" for="property_type">Types</label>
 			<div class="select">
 				<select name="property_type" id="property_type" bind:value={selected_type}>
@@ -92,11 +91,10 @@
 
 <section class="description">
 	<div class="text_content">
-		<h1>We find the right property for your golden visa </h1>
+		<h1>We find the right property for your golden visa</h1>
 		<h3>Our area of expertise is in properties between €500.000 and €3.000.000</h3>
 		<br />
-		<span
-			>We are with you from selection to financing to purchasing and after-sales service.</span>
+		<span>We are with you from selection to financing to purchasing and after-sales service.</span>
 	</div>
 </section>
 
@@ -104,10 +102,15 @@
 	<div class="evaluation_wrapper tile is-ancestor">
 		<div class="evaluation_text tile">
 			<h1>What are you looking to buy?</h1>
-			<h3>If you care about more than just rental yield, please let us know and we will send you a customised list of properties.</h3>
+			<h3>
+				If you care about more than just rental yield, please let us know and we will send you a
+				customised list of properties.
+			</h3>
 			<br />
 			<span
-			>We will help you select the right property for you, to live in and / or rent it out while you are abroad.</span>
+				>We will help you select the right property for you, to live in and / or rent it out while
+				you are abroad.</span
+			>
 			<img src={report_svg} alt="home evaluation report" class="report_svg" />
 		</div>
 		<div class="evaluation_form tile">
@@ -150,7 +153,9 @@
 				</div>
 
 				<div class="field">
-					<label class="label" for="type">Type of Property (Apartment, Villa, Townhouse, etc.)</label>
+					<label class="label" for="type"
+						>Type of Property (Apartment, Villa, Townhouse, etc.)</label
+					>
 					<div class="control">
 						<input class="input " type="text" placeholder="" id="type" required name="type" />
 					</div>

@@ -21,7 +21,7 @@
 	let search_results: Search_Response;
 	let location_results: Location_Response;
 
-	let selected_locations: string[] = [];
+	let selected_locations: string[] = ['Marbella'];
 
 	$: {
 		// reactive variables that are changed when the data prop changes (data comes from the server)
