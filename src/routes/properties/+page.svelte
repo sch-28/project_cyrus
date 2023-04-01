@@ -61,18 +61,21 @@
 </svelte:head>
 <Form on:submit method="GET" id="form">
 	<FormGroup class="inline_select">
-		<div class="field">
-			<label class="label" for="property_type">Types</label>
-			<div class="select">
-				<select value={params.property_type} name="property_type" id="property_type">
-					<option value="0">All types </option>
-					<option value="1">Apartment</option>
-					<option value="2">House</option>
-					<option value="3">Plot</option>
-					<option value="4">Commerical</option>
-				</select>
+		<!--  LOCATION SELECT -->
+		{#if location_results && location_results.status}
+			<div class="autocomplete_container">
+				<label class="label" for="autocomplete_location">Location</label>
+				<AutoComplete
+					inputId="autocomplete_location"
+					items={location_results.LocationData?.ProvinceArea.Locations.Location}
+					bind:selectedItem={selected_locations}
+					placeholder="All locations"
+					showClear
+					multiple
+				/>
+				<input type="hidden" name="locations" value={selected_locations.join(',')} />
 			</div>
-		</div>
+		{/if}
 	</FormGroup>
 
 	<!--  PRICE RANGE SELECT -->
@@ -118,22 +121,18 @@
 				id="bedrooms"
 			/>
 		</div>
-
-		<!--  LOCATION SELECT -->
-		{#if location_results && location_results.status}
-			<div class="autocomplete_container">
-				<label class="label" for="autocomplete_location">Location</label>
-				<AutoComplete
-					inputId="autocomplete_location"
-					items={location_results.LocationData?.ProvinceArea.Locations.Location}
-					bind:selectedItem={selected_locations}
-					placeholder="All locations"
-					showClear
-					multiple
-				/>
-				<input type="hidden" name="locations" value={selected_locations.join(',')} />
+		<div class="field">
+			<label class="label" for="property_type">Types</label>
+			<div class="select">
+				<select value={params.property_type} name="property_type" id="property_type">
+					<option value="0">All types </option>
+					<option value="1">Apartment</option>
+					<option value="2">House</option>
+					<option value="3">Plot</option>
+					<option value="4">Commerical</option>
+				</select>
 			</div>
-		{/if}
+		</div>
 	</FormGroup>
 
 	<!-- Main container -->
