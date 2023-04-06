@@ -7,6 +7,17 @@
 <svelte:head>
 	<title>About Varzi Realty</title>
 	<meta name="description" content="About the founder and the company" />
+	
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-665029813"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-665029813');
+</script>
+
 </svelte:head>
 
 <img class="founder_image" src={founder_image} alt="Cyrus Varzi" />
@@ -19,7 +30,9 @@ Cyrus is an IESE (Barcelona) MBA Graduate of Class of 2017, with a background in
 </span>
 <br />
 <span>
-Cyrus speaks English, Spanish, German and Farsi and has developed a strong knowledge of the real estate market in Marbella, as well as all aspects of the buying & selling process.
+Cyrus speaks English, Spanish, German and Farsi and has developed a strong knowledge of the real estate market in Marbella, as well as all aspects of the buying & selling process.<br />
+He has also developed the neccessary contacts to ensure transfers from abroad reach Spanish Banks and are cleared before settling.
+
 </span>
 <div class="spacer" />
 <div class="container">
