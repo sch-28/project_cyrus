@@ -7,17 +7,6 @@
 <svelte:head>
 	<title>About Varzi Realty</title>
 	<meta name="description" content="About the founder and the company" />
-	
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-665029813"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-665029813');
-</script>
-
 </svelte:head>
 
 <img class="founder_image" src={founder_image} alt="Cyrus Varzi" />
