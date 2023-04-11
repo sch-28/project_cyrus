@@ -47,11 +47,12 @@
 	<div class="tile is-ancestor">
 		<div class="tile">
 			<div class="left">
-				<h3>What are the requirements?</h3>
+				<h3>How can we help you obtain one?</h3>
 				<br />
-				<span>In order to be considered for the golden visa, you must be over 18 years of age and have proof of making one of the aforementioned investments. 
-					Also, you must obtain Spanish health insurance and must not have previously been rejected from any Schengen visas. A clear criminal history and a stable financial situation are also a must.
-			 <br/>
+				<span>We have been working since 2019 in the Marbella real estate market and have gained deep knowledge of the market, as well as made the neccessary contacts to help <br/>
+					facilitate all aspects of the golden visa. We help you find the perfect property for you to live in or earn income renting out, our network of lawyers ensures it is bought<br/>
+					free of obligations, and our banking contacts ensure the funds can be transferred without delays by Spanish Banks. 
+					<br/>For any questions, please feel contact us!
 
 				</span>
 			</div>
